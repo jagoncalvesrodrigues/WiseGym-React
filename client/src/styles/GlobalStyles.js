@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body{
-        font-family: sans-serif;
+        font-family: "Inter", serif;
         margin: 0;
     }
 

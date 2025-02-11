@@ -1,16 +1,26 @@
-import { StyledLogo, StyledNav } from './menu.styles';
+import { useState } from 'react';
+import {
+	StyledBox,
+	StyledLogo,
+	StyledMenuOptions,
+	StyledNavItem
+} from './menu.styles';
 
 const Menu = () => {
+	const [toggle, setToggle] = useState(false);
+
 	return (
-		<StyledNav>
+		<StyledBox>
 			<StyledLogo>
 				<img src='/assets/images/logos/Logo-wise-gym-w.png' alt='' />
 			</StyledLogo>
-			<ul>
-				<li>STORE</li>
-				<li>LOGIN</li>
-			</ul>
-		</StyledNav>
+			<StyledMenuOptions>
+				<ul>
+					<StyledNavItem>STORE</StyledNavItem>
+					<StyledNavItem>LOGIN</StyledNavItem>
+				</ul>
+			</StyledMenuOptions>
+		</StyledBox>
 	);
 };
 
