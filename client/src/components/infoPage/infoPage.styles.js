@@ -11,9 +11,9 @@ const StyledMainDiv = styled.div`
         grid-template-rows: repeat(4,1fr);
     }
     @media screen and (width>=1024px){
+
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2,1fr);
-        height: 1024px;
     }
 
 `

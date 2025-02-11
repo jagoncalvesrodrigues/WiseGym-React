@@ -16,15 +16,18 @@ const StyledBoxHeader = styled.div`
 
 `
 const StyledJoinNow = styled.div`
-    background-color: ${({$bg})=>$bg};
-    width: 234px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left:calc(50% - 117px);
-    bottom: 50px;
+    display: none;
+    @media screen and (width >= 768px){
+        background-color: ${({$bg})=>$bg};
+        width: 234px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left:calc(50% - 117px);
+        bottom: 50px;
+    }
 `
 
 export {StyledBoxHeader,StyledJoinNow}

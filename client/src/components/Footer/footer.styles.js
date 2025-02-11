@@ -8,18 +8,20 @@ const StyledBoxFooter = styled.div`
     display: flex;
     flex-direction: column;
 
-    /* @media screen and (width>=834px){
+    @media screen and (width>=768px){
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 170px auto;
-    } */
-`;
+    }
+    `;
 const StyledOptionsFooterMenu = styled.div`
-    /* grid-column: 2/4;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white; */
+    @media screen and (width>=768px){
+        grid-column: 2/4;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+    }
 `;
 const StyledRRSS = styled.div`
     display: flex;

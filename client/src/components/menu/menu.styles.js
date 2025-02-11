@@ -1,27 +1,112 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { COLORS } from "../../constants/colors";
 
-const StyledBox = styled.nav`
-    height: 183px;
+const StyledNavBar = styled.nav`
+    display: flex;
+    flex-direction: column;
+    background-color: ${({ $isVisible }) => $isVisible ? COLORS.brown : "transparent"};;
+
+    @media screen and (width >=768px){
+        flex-direction: row;
+        height: 117px;
+        background-color:transparent ;
+        justify-content: space-around;
+        padding: 22px;
+        
+    }
+`;
+const StyledNavMobile = styled.div`
+    display: flex;
+    height: 117px;
     width: 100%;
-    display: flex;
-    padding: 57px 62px;
     justify-content: space-between;
+    align-items: center;
+    padding: 22px; 
+    
+    @media screen and (width >=768px){
+        padding: 0;
+        width: auto;
+        height: auto;
+    }
 `;
-const StyledLogo = styled.a`
-    height:83px;
+const StyledLogo = styled.div`
+    width: 157px;
+
+    @media screen and (width >=1024px){
+        width: 200px;
+    }
+`;
+const StyledUl = styled.ul`
     display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+    color: ${COLORS.white};
+    gap: 40px;
+
+    @media screen and (width >=768px){
+        flex-direction: row;
+        background-color: transparent;
+        justify-content: space-around;
+        gap: 100px;
+        height: 100%;
+    }
 `;
-const StyledMenuOptions = styled.div`
+const NavItem = styled.li`
+    height: 110px;
+    display: flex;
+    align-items: center;
+    @media screen and (width >=768px){
+        height: auto;
+        width: 175px;
+        justify-content: center;
+    }
+`;
+const NavItemJoin = styled.li`
+    height: 110px;
+    display: flex;
+    align-items: center;
+    
+    @media screen and (width >=768px){
+        display: none;
+        height: 100%;
+    }
+`;
+const StyledIcons = styled.div`
+    @media screen and (width >=768px){
+        display: none;
+    }
+`;
+const StyledHamburger = styled.div`
+    display: ${({$isVisible})=>($isVisible ? "none":"flex")};
+`;
+
+const StyledClose = styled.div`
+    display: ${({$isVisible})=>($isVisible ? "flex":"none")};
+`;
+    
+const StyledOptions = styled.div`
+    display: ${({$isVisible})=>($isVisible ? "flex":"none")};
+    flex-direction: column;
+    height: 100vh;
+    gap: 155px;
+
+    @media screen and (width >=768px){
+        height: 100%;
+        display: flex;
+    }
+
+`;
+const StyledRRSS = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    position: relative;
-    width: 50%;
-`;
-const StyledNavItem = styled.li`
-    color: white;
+    @media screen and (width >=768px){
+        display: none;
+    }
 `;
 
 
 
-export {StyledBox,StyledLogo,StyledMenuOptions,StyledNavItem}
+export {StyledOptions,StyledUl,StyledClose,StyledHamburger,NavItemJoin,StyledRRSS,StyledNavMobile,StyledIcons,StyledNavBar,StyledLogo,NavItem}

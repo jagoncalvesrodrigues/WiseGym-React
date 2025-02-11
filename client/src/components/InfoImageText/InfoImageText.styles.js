@@ -23,6 +23,7 @@ const StyledBoxText = styled.div`
         width: 100%;
     }
     @media screen and (width>=1024px){
+        height: 512px;
         grid-column: ${({$columntext})=>$columntext};
         grid-row: ${({$rowtext})=>$rowtext};
     }
@@ -34,6 +35,10 @@ const StyledImg = styled.img`
     @media screen and (width>=768px){
         width: 100%;
         height: 660px;
+    }
+    @media screen and (width>=768px){
+        width: 100%;
+        height: 512px;
     }
 `
 const StyledBoxImg = styled.div`
