@@ -13,7 +13,7 @@ import {
 	StyledUl
 } from './menu.styles';
 
-const Menu = () => {
+const Menu = ({ loginAppears }) => {
 	const [toggle, setToggle] = useState(false);
 
 	return (
@@ -42,21 +42,21 @@ const Menu = () => {
 					<NavItem>
 						<a href=''>STORE</a>
 					</NavItem>
-					<NavItem>
-						<a href=''>LOGIN</a>
+					<NavItem onClick={loginAppears}>
+						<p>LOGIN</p>
 					</NavItem>
 					<NavItemJoin>
 						<a href=''>JOIN NOW</a>
 					</NavItemJoin>
 				</StyledUl>
 				<StyledRRSS>
-					<a href=''>
+					<a href='https://www.instagram.com/ufc/'>
 						<img src='public/assets/images/icon/Instagram.svg' alt='' />
 					</a>
-					<a href=''>
+					<a href='https://www.tiktok.com/@ufc?lang=es'>
 						<img src='public/assets/images/icon/Tiktok.svg' alt='' />
 					</a>
-					<a href=''>
+					<a href='https://www.youtube.com/@ufc'>
 						<img src='public/assets/images/icon/Youtube.svg' alt='' />
 					</a>
 				</StyledRRSS>

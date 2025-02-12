@@ -11,13 +11,15 @@ const StyledBoxFooter = styled.div`
     @media screen and (width>=768px){
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 170px auto;
+        grid-template-rows: 150px auto;
     }
     `;
 const StyledOptionsFooterMenu = styled.div`
+    display: flex;
+    flex-direction: column;
     @media screen and (width>=768px){
         grid-column: 2/4;
-        display: flex;
+        flex-direction: row;
         justify-content: space-around;
         align-items: center;
         color: white;
@@ -27,13 +29,13 @@ const StyledRRSS = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 170px;
+    height: 250px;
 `;
 const StyledBoxLogo = styled.div`
     display: flex;
     /* padding: 52px 45px; */
     align-items: center;
-    height: 100px;
+    height: 100%;
     justify-content: center;
     & img{
         width: 244px;
@@ -45,9 +47,8 @@ const StyledInfoButtons = styled.div`
 `;
 const StyledButtosFooterMenu = styled.div`
     color:${COLORS.white} ;
-    width: 100%;
-    height: 170px;
     display: flex;
+    height: 170px;
     justify-content: space-around;
     align-items: center;
 `;

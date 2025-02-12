@@ -32,16 +32,15 @@ const StyledImg = styled.img`
     object-fit: cover;
     width: 100%;
     height: 377px;
-    @media screen and (width>=768px){
-        width: 100%;
+    @media screen and (width>=768px){ 
         height: 660px;
     }
-    @media screen and (width>=768px){
-        width: 100%;
+    @media screen and (width>=1024px){
         height: 512px;
     }
-`
+    `
 const StyledBoxImg = styled.div`
+   
     @media screen and (width>=1024px){
         grid-column: ${({$columnimg})=>$columnimg};
         grid-row: ${({$rowimg})=>$rowimg};

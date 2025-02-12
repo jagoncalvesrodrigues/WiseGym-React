@@ -25,13 +25,13 @@ const Footer = () => {
 				</StyledButtosFooterMenu>
 			</StyledOptionsFooterMenu>
 			<StyledRRSS>
-				<a href=''>
+				<a href='https://www.instagram.com/ufc/'>
 					<img src='public/assets/images/icon/Instagram.svg' alt='' />
 				</a>
-				<a href=''>
+				<a href='https://www.tiktok.com/@ufc?lang=es'>
 					<img src='public/assets/images/icon/Tiktok.svg' alt='' />
 				</a>
-				<a href=''>
+				<a href='https://www.youtube.com/@ufc'>
 					<img src='public/assets/images/icon/Youtube.svg' alt='' />
 				</a>
 			</StyledRRSS>
