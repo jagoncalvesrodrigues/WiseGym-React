@@ -1,48 +1,47 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
+import { auth } from '../../config/firebase.config';
 import {
 	StyledButton,
 	StyledFormSection,
 	StyledImageSection,
 	StyledInput,
 	StyledLabel,
-	StyledLabelForgot,
 	StyledLabelSignUp,
 	StyledLoginBox,
 	StyledLoginContainer,
 	StyledLogo,
 	StyledSubtitle,
 	StyledTitle
-} from './login.styles';
-import { auth } from '../../config/firebase.config';
+} from './register.styles';
 
-const Login = ({ login, loginAppears }) => {
+const Register = ({ register, registerAppears }) => {
 	return (
 		<StyledLoginContainer
 			onClick={e => {
 				//Se hace esto para seleccionar justamente el div de afuera y no se
 				//cierre al hacer click en un hijo
 				if (e.target === e.currentTarget) {
-					loginAppears();
+					registerAppears();
 				}
 			}}
-			$login={login}
+			$login={register}
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
-				<StyledFormSection onSubmit={loginUser}>
+				<StyledFormSection onSubmit={registerUser}>
 					<StyledLogo>
 						<img src='public/assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
-					<StyledTitle>Welcome Back!</StyledTitle>
+					<StyledTitle>Get Started Now!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>
 					<StyledLabel htmlFor=''>Email</StyledLabel>
 					<StyledInput type='email' name='email' id='email' />
 					<StyledLabel htmlFor=''>Password</StyledLabel>
 					<StyledInput type='password' name='password' id='password' />
-					<StyledLabelForgot htmlFor=''>Forgot Password</StyledLabelForgot>
-					<StyledButton type='submit' value='Login' />
+					<StyledButton type='submit' value='Sign Up' />
 					<StyledLabelSignUp htmlFor=''>
-						Don’t have an account?<a href=''>Login</a>
+						Do you have an account?<a href=''>Login</a>
 					</StyledLabelSignUp>
 				</StyledFormSection>
 			</StyledLoginBox>
@@ -50,13 +49,13 @@ const Login = ({ login, loginAppears }) => {
 	);
 };
 
-const loginUser = async event => {
+const registerUser = async event => {
 	event.preventDefault();
 	//guardamos la info del campo en una variable
 	const email = event.target.email.value;
 	const pass = event.target.password.value;
 	try {
-		await signInWithEmailAndPassword(auth, email, pass);
+		await createUserWithEmailAndPassword(auth, email, pass);
 		console.log('User Logged');
 		event.target.reset();
 	} catch (err) {
@@ -64,4 +63,4 @@ const loginUser = async event => {
 	}
 };
 
-export default Login;
+export default Register;

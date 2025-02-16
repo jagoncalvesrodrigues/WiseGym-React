@@ -12,8 +12,9 @@ import {
 	StyledRRSS,
 	StyledUl
 } from './menu.styles';
+import { Link } from 'react-router-dom';
 
-const Menu = ({ loginAppears }) => {
+const Menu = ({ loginAppears, registerAppears, user, loading }) => {
 	const [toggle, setToggle] = useState(false);
 
 	return (
@@ -40,14 +41,31 @@ const Menu = ({ loginAppears }) => {
 			<StyledOptions $isVisible={toggle}>
 				<StyledUl>
 					<NavItem>
-						<a href=''>STORE</a>
+						<Link to='/store'>STORE</Link>
 					</NavItem>
-					<NavItem onClick={loginAppears}>
-						<p>LOGIN</p>
-					</NavItem>
-					<NavItemJoin>
-						<a href=''>JOIN NOW</a>
-					</NavItemJoin>
+					{!user && !loading && (
+						<>
+							<NavItem onClick={loginAppears}>
+								<p>LOGIN</p>
+							</NavItem>
+							<NavItemJoin onClick={registerAppears}>
+								<p>JOIN NOW</p>
+							</NavItemJoin>
+						</>
+					)}
+					{user && (
+						<>
+							<NavItem>
+								<p>BOOK</p>
+							</NavItem>
+							<NavItem>
+								<p>MESSAGES</p>
+							</NavItem>
+							<NavItem>
+								<p>PROFILE</p>
+							</NavItem>
+						</>
+					)}
 				</StyledUl>
 				<StyledRRSS>
 					<a href='https://www.instagram.com/ufc/'>

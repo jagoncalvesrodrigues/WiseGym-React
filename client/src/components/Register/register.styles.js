@@ -10,7 +10,6 @@ const StyledLoginContainer = styled.div`
     background-color: rgba(84, 58, 20, 0.7);
     backdrop-filter: blur(5px);
     position: fixed;
-    
  
     @media (max-width: 425px) {
         padding: 0;
@@ -44,7 +43,7 @@ const StyledLoginBox = styled.div`
 
 const StyledImageSection = styled.div`
     display: none;
-    background-image: url('public/assets/images/imgs/pexels-edwardeyer-10610182.jpg');
+    background-image: url('public/assets/images/imgs/register-photo.png');
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -102,6 +101,7 @@ const StyledInput = styled.input`
     border-style: none;
     border-bottom: 1px solid ${COLORS.black};
     padding: 10px;
+    margin-bottom: 10px;
 `;
 
 const StyledButton = styled.input`
