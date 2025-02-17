@@ -62,7 +62,7 @@ const Menu = ({ loginAppears, registerAppears, user, loading }) => {
 								<p>MESSAGES</p>
 							</NavItem>
 							<NavItem>
-								<p>PROFILE</p>
+								<Link to='/profile'>PROFILE</Link>
 							</NavItem>
 						</>
 					)}
