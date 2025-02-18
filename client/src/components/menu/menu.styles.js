@@ -22,6 +22,7 @@ const StyledNavMobile = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 22px; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .2);
     
     @media screen and (width >=768px){
         padding: 0;

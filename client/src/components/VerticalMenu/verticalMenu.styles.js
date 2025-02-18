@@ -7,10 +7,12 @@ const StyledBoxMenuVertical = styled.div`
     background-position: center;
     background-size: cover;
     box-shadow: 10px 0px 5px rgba(0, 0, 0, .2);
-    display: flex;
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, .2);
+    display: ${({$toggle}) => $toggle ? 'flex':'none'};
     flex-direction: column;
     padding: 10px;
-    position: fixed;
+    position: absolute;
+    right: 0;
 `;
 const StyledBoxProfile = styled.div`
    height: 88px;
@@ -37,5 +39,19 @@ const StyledMenuVOption = styled.div`
     padding: 25px;
     padding-left: 50px;
 `;
+const StyledNavMobileProfile = styled.div`
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .2);
+    
+    @media screen and (width >=768px){
+        display: none;
+    }
+`;
 
-export {StyledMenuVOption,StyledBoxMenuVertical,StyledBoxProfile,StyledPhoto}
+
+export {StyledNavMobileProfile,StyledMenuVOption,StyledBoxMenuVertical,StyledBoxProfile,StyledPhoto}
