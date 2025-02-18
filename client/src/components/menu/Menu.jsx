@@ -56,10 +56,10 @@ const Menu = ({ loginAppears, registerAppears, user, loading }) => {
 					{user && (
 						<>
 							<NavItem>
-								<p>BOOK</p>
+								<Link to='/booking'>BOOK</Link>
 							</NavItem>
 							<NavItem>
-								<p>MESSAGES</p>
+								<Link to='/messages'>MESSAGES</Link>
 							</NavItem>
 							<NavItem>
 								<Link to='/profile'>PROFILE</Link>

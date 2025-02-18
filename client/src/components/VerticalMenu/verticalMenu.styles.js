@@ -6,13 +6,25 @@ const StyledBoxMenuVertical = styled.div`
     background-image: url('public/assets/images/imgs/sidemenu.jpg');
     background-position: center;
     background-size: cover;
-    box-shadow: 10px 0px 5px rgba(0, 0, 0, .2);
     box-shadow: -5px 0px 5px rgba(0, 0, 0, .2);
     display: ${({$toggle}) => $toggle ? 'flex':'none'};
     flex-direction: column;
     padding: 10px;
     position: absolute;
     right: 0;
+    z-index: 567;
+    position: fixed;
+    @media screen and (width >=768px){
+        display: flex;
+        left: 0;
+        z-index: 10;
+        position: fixed;
+        box-shadow: 10px 0px 5px rgba(0, 0, 0, .2);
+        width: 35%;
+    }
+    @media screen and (width >=1024px){
+        width: 20%;
+    }
 `;
 const StyledBoxProfile = styled.div`
    height: 88px;

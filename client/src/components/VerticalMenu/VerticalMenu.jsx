@@ -13,6 +13,7 @@ import {
 	StyledIcons,
 	StyledLogo
 } from '../menu/menu.styles';
+import { Link } from 'react-router-dom';
 
 const VerticalMenu = () => {
 	const [toggle, setToggle] = useState(false);
@@ -41,8 +42,12 @@ const VerticalMenu = () => {
 				</StyledBoxProfile>
 				{MENUVERTICAL.map(option => (
 					<StyledMenuVOption key={option.name}>
-						<img src={option.icon} alt='' />
-						<p>{option.name}</p>
+						<Link>
+							<img src={option.icon} alt='' />
+						</Link>
+						<Link to='/'>
+							<p>{option.name}</p>
+						</Link>
 					</StyledMenuVOption>
 				))}
 			</StyledBoxMenuVertical>

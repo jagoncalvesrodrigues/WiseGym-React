@@ -1,3 +1,4 @@
+import { CARD_INFO } from '../../constants/cardSub';
 import {
 	StyledCard,
 	StyledCardImage,
@@ -7,15 +8,17 @@ import {
 	StyledTitle
 } from './SubscriptionCard.styles';
 
-const SubscriptionCard = () => {
+const SubscriptionCard = ({ sub, position, price, img, color }) => {
 	return (
-		<StyledCard>
-			<StyledCardImage />
+		<StyledCard $color={color}>
+			<StyledCardImage $position={position} $img={img} />
 			<StyledTextCard>
-				<StyledTitle></StyledTitle>
-				<StyledText></StyledText>
+				<StyledTitle>{sub}</StyledTitle>
+				{CARD_INFO[0].info.map((line, index) => (
+					<StyledText key={index}>{line}</StyledText>
+				))}
+				<StyledPrice>{price}</StyledPrice>
 			</StyledTextCard>
-			<StyledPrice></StyledPrice>
 		</StyledCard>
 	);
 };

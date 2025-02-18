@@ -1,12 +1,32 @@
 import styled from "styled-components";
 
 //PROFILE
+const StyledMainBoxProfile = styled.div`
+    @media screen and (width >= 768px){
+        display: flex;
+    }
+`;
+const StyledInfoPofile = styled.div`
+    @media screen and (width >= 768px){
+        width: 65%;
+        height: 100%;
+        padding: 10px;
+        margin-left: auto;
+    }
+    @media screen and (width >= 1024px){
+        width: 80%;
+    }
+`;
 const StyledProfile = styled.div`
     width: 100%;
     padding: 10px;
     height: 497px;
-    background-image: url('public/assets/images/imgs/fondo-profile.jpg');
+    background-image: url('/assets/images/imgs/fondo-profile.jpg');
     padding-bottom: 41px;
+    margin-bottom: 10px;
+    @media screen and (width >= 768px){
+        padding: 10px;
+    }
     @media screen and (width >= 1024px){
         background-position: center;
         background-size: cover;
@@ -19,7 +39,7 @@ const StyleImageBoxProfile = styled.div`
     display: flex;
     justify-content: center;
     
-    @media screen and (width >= 1024px){
+    @media screen and (width >= 768px){
         justify-content: left;
     }
 
@@ -56,6 +76,10 @@ const StyledInput = styled.input`
 
 const StyledSubscriptions = styled.div`
     width: 100%;
-    padding: 10px;
+
+    @media screen and (width >= 1024px) {
+        display: flex;
+        gap: 10px;
+    }
 `;
-export {StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
+export {StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
