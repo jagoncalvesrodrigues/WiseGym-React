@@ -41,6 +41,7 @@ const StyleImageBoxProfile = styled.div`
     
     @media screen and (width >= 768px){
         justify-content: left;
+        margin-bottom: 30px;
     }
 
 `;

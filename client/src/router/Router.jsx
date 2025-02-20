@@ -6,6 +6,9 @@ import ProtectedRoute from './ProtectedRoutes';
 import Profile from '../pages/Profile/Profile';
 import Messages from '../pages/Messages/Messages';
 import Layout from '../Layout/Layout';
+import LayoutLogged from '../Layout/LayoutLogged';
+import Reservations from '../pages/Reservations/Reservations';
+import Spaces from '../pages/Spaces/Spaces';
 
 const Router = () => {
 	return (
@@ -16,10 +19,14 @@ const Router = () => {
 			<Route path='/store' element={<Store />} />
 			<Route element={<ProtectedRoute />}>
 				<Route path='/messages' element={<Layout />}>
-					<Route path='/messages' element={<Messages />} />
+					<Route index element={<Messages />} />
 				</Route>
-				<Route path='/booking' element={<Booking />} />
-				<Route path='/profile' element={<Profile />} />
+				<Route element={<LayoutLogged />}>
+					<Route path='/booking' element={<Booking />} />
+					<Route path='/profile' element={<Profile />} />
+					<Route path='/reservations' element={<Reservations />} />
+					<Route path='/space' element={<Spaces />} />
+				</Route>
 			</Route>
 		</Routes>
 	);

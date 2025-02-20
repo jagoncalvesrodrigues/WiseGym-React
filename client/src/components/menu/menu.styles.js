@@ -22,9 +22,10 @@ const StyledNavMobile = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 22px; 
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, .2);
     
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .2);
     @media screen and (width >=768px){
+        box-shadow: none;
         padding: 0;
         width: auto;
         height: auto;
@@ -60,7 +61,6 @@ const NavItem = styled.li`
     align-items: center;
     @media screen and (width >=768px){
         height: auto;
-        width: 175px;
         justify-content: center;
     }
 `;
@@ -90,8 +90,10 @@ const StyledClose = styled.div`
 const StyledOptions = styled.div`
     display: ${({$isVisible})=>($isVisible ? "flex":"none")};
     flex-direction: column;
+    width: 100vw;
     height: 100vh;
-    gap: 155px;
+    gap: 90px;
+
 
     @media screen and (width >=768px){
         height: 100%;

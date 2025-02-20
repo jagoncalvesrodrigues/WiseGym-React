@@ -1,4 +1,3 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import {
 	StyledButton,
 	StyledFormSection,
@@ -12,10 +11,9 @@ import {
 	StyledLogo,
 	StyledSubtitle,
 	StyledTitle
-} from './login.styles';
-import { auth } from '../../config/firebase.config';
+} from './addmessage.styles';
 
-const Login = ({ login, loginAppears }) => {
+const AddMessage = () => {
 	return (
 		<StyledLoginContainer
 			onClick={e => {
@@ -29,9 +27,9 @@ const Login = ({ login, loginAppears }) => {
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
-				<StyledFormSection onSubmit={loginUser}>
+				<StyledFormSection>
 					<StyledLogo>
-						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
+						<img src='public/assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
 					<StyledTitle>Welcome Back!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>
@@ -50,18 +48,4 @@ const Login = ({ login, loginAppears }) => {
 	);
 };
 
-const loginUser = async event => {
-	event.preventDefault();
-	//guardamos la info del campo en una variable
-	const email = event.target.email.value;
-	const pass = event.target.password.value;
-	try {
-		await signInWithEmailAndPassword(auth, email, pass);
-		console.log('User Logged');
-		event.target.reset();
-	} catch (err) {
-		console.error('Error login user:', err.code, err.message);
-	}
-};
-
-export default Login;
+export default AddMessage;

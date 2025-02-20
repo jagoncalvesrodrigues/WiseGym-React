@@ -38,14 +38,14 @@ const VerticalMenu = () => {
 			<StyledBoxMenuVertical $toggle={toggle}>
 				<StyledBoxProfile>
 					<StyledPhoto></StyledPhoto>
-					<p>Juan Goncalves</p>
+					<Link to='/profile'>Juan Goncalves</Link>
 				</StyledBoxProfile>
 				{MENUVERTICAL.map(option => (
 					<StyledMenuVOption key={option.name}>
 						<Link>
 							<img src={option.icon} alt='' />
 						</Link>
-						<Link to='/'>
+						<Link to={option.route}>
 							<p>{option.name}</p>
 						</Link>
 					</StyledMenuVOption>

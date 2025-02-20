@@ -69,13 +69,13 @@ const Menu = ({ loginAppears, registerAppears, user, loading }) => {
 				</StyledUl>
 				<StyledRRSS>
 					<a href='https://www.instagram.com/ufc/'>
-						<img src='public/assets/images/icon/Instagram.svg' alt='' />
+						<img src='assets/images/icon/Instagram.svg' alt='' />
 					</a>
 					<a href='https://www.tiktok.com/@ufc?lang=es'>
-						<img src='public/assets/images/icon/Tiktok.svg' alt='' />
+						<img src='assets/images/icon/Tiktok.svg' alt='' />
 					</a>
 					<a href='https://www.youtube.com/@ufc'>
-						<img src='public/assets/images/icon/Youtube.svg' alt='' />
+						<img src='assets/images/icon/Youtube.svg' alt='' />
 					</a>
 				</StyledRRSS>
 			</StyledOptions>

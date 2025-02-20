@@ -1,5 +1,4 @@
 import SubscriptionCard from '../../components/SubscriptionCard/SubscriptionCard';
-import VerticalMenu from '../../components/VerticalMenu/VerticalMenu';
 import { CARD_INFO } from '../../constants/cardSub';
 import {
 	StyledBoxInputEdit,
@@ -16,7 +15,6 @@ import {
 const Profile = () => {
 	return (
 		<StyledMainBoxProfile>
-			<VerticalMenu></VerticalMenu>
 			<StyledInfoPofile>
 				<StyledProfile>
 					<StyleImageBoxProfile>
