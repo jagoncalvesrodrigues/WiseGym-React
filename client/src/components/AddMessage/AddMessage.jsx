@@ -16,20 +16,20 @@ import {
 const AddMessage = () => {
 	return (
 		<StyledLoginContainer
-			onClick={e => {
-				//Se hace esto para seleccionar justamente el div de afuera y no se
-				//cierre al hacer click en un hijo
-				if (e.target === e.currentTarget) {
-					loginAppears();
-				}
-			}}
-			$login={login}
+		// onClick={e => {
+		// 	Se hace esto para seleccionar justamente el div de afuera y no se
+		// 	cierre al hacer click en un hijo
+		// 	if (e.target === e.currentTarget) {
+		// 		loginAppears();
+		// 	}
+		// }}
+		// $login={login}
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
 				<StyledFormSection>
 					<StyledLogo>
-						<img src='public/assets/images/logos/Logo_sencillo.svg' alt='' />
+						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
 					<StyledTitle>Welcome Back!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>

@@ -9,7 +9,7 @@ export const CARD_INFO = [
             'Unlimited use of Fitness Center'
         ],
         price: '70$',
-        img: 'public/assets/images/imgs/plan-basic.jpg',
+        img: '/assets/images/imgs/plan-basic.jpg',
         color: COLORS.brown50,
         position:'600px'
     },
@@ -20,7 +20,7 @@ export const CARD_INFO = [
             '3 hour per day',
             'Unlimited use of Fitness Center'
         ],        price:'150$',
-        img:'public/assets/images/imgs/plan-premium.jpg',
+        img:'/assets/images/imgs/plan-premium.jpg',
         color:COLORS.yellow,
         position:'650px'
     },
@@ -33,7 +33,7 @@ export const CARD_INFO = [
             'Space reservation'
         ],
         price:'400$',
-        img:'public/assets/images/imgs/plan-professional.jpg',
+        img:'/assets/images/imgs/plan-professional.jpg',
         color:COLORS.black,
         position:'750px'
     },

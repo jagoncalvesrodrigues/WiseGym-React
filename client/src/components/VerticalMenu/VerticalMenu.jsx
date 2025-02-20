@@ -21,17 +21,17 @@ const VerticalMenu = () => {
 		<>
 			<StyledNavMobileProfile>
 				<StyledLogo>
-					<img src='assets/images/logos/Logo-wise-gym.png' alt='' />
+					<img src='/assets/images/logos/Logo-wise-gym.png' alt='' />
 				</StyledLogo>
 				<StyledIcons>
 					<StyledHamburger
 						$isVisible={toggle}
 						onClick={() => showMenu(setToggle)}
 					>
-						<img src='assets/images/icon/Hamburger-B.svg' alt='' />
+						<img src='/assets/images/icon/Hamburger-B.svg' alt='' />
 					</StyledHamburger>
 					<StyledClose $isVisible={toggle} onClick={() => showMenu(setToggle)}>
-						<img src='assets/images/icon/Close-B.svg' alt='' />
+						<img src='/assets/images/icon/Close-B.svg' alt='' />
 					</StyledClose>
 				</StyledIcons>
 			</StyledNavMobileProfile>

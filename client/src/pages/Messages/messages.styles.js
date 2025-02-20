@@ -48,9 +48,9 @@ const StyledNameButtons = styled.p`
     }
     `;
 const StyledModifyDate = styled.form`
+    display: ${({$isVisible})=>$isVisible ? 'flex':'none'};
     background-color: ${COLORS.egg};
     padding: 20px 20px;
-    display: flex;
     flex-direction: column;
     gap: 20px;
     `;

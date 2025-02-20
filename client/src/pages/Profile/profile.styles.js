@@ -38,6 +38,7 @@ const StyleImageBoxProfile = styled.div`
     padding: 10px;
     display: flex;
     justify-content: center;
+    justify-content: space-between;
     
     @media screen and (width >= 768px){
         justify-content: left;
@@ -73,6 +74,14 @@ const StyledInput = styled.input`
     padding: 10px;
     width: 100%;
 `;
+const StyledSignOut = styled.img`
+
+  @media screen and (width >= 768px){
+    
+      position: absolute;
+      right: 50px;
+    }
+`;
 //SUBSCRIPTIONS
 
 const StyledSubscriptions = styled.div`
@@ -83,4 +92,4 @@ const StyledSubscriptions = styled.div`
         gap: 10px;
     }
 `;
-export {StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
+export {StyledSignOut,StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
