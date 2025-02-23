@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledBoxMenuVertical = styled.div`
     width: 313px;
     height: 100vh;
-    background-image: url('public/assets/images/imgs/sidemenu.jpg');
+    background-image: url('/assets/images/imgs/sidemenu.jpg');
     background-position: center;
     background-size: cover;
     box-shadow: -5px 0px 5px rgba(0, 0, 0, .2);

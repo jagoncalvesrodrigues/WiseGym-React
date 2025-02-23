@@ -1,50 +1,37 @@
 import {
-	StyledButton,
-	StyledFormSection,
-	StyledImageSection,
-	StyledInput,
+	StyledAcceptButton,
+	StyledBoxButtons,
+	StyledCancelButton,
+	StyledFormMessage,
 	StyledLabel,
-	StyledLabelForgot,
-	StyledLabelSignUp,
-	StyledLoginBox,
-	StyledLoginContainer,
-	StyledLogo,
-	StyledSubtitle,
-	StyledTitle
+	StyledMessageBox,
+	StyledMessageContainer,
+	StyledTextArea,
+	StyledTitleAdd,
+	StyledTitleMessage
 } from './addmessage.styles';
 
-const AddMessage = () => {
+const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
 	return (
-		<StyledLoginContainer
-		// onClick={e => {
-		// 	Se hace esto para seleccionar justamente el div de afuera y no se
-		// 	cierre al hacer click en un hijo
-		// 	if (e.target === e.currentTarget) {
-		// 		loginAppears();
-		// 	}
-		// }}
-		// $login={login}
-		>
-			<StyledLoginBox>
-				<StyledImageSection />
-				<StyledFormSection>
-					<StyledLogo>
-						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
-					</StyledLogo>
-					<StyledTitle>Welcome Back!</StyledTitle>
-					<StyledSubtitle>Please enter your details</StyledSubtitle>
-					<StyledLabel htmlFor=''>Email</StyledLabel>
-					<StyledInput type='email' name='email' id='email' />
-					<StyledLabel htmlFor=''>Password</StyledLabel>
-					<StyledInput type='password' name='password' id='password' />
-					<StyledLabelForgot htmlFor=''>Forgot Password</StyledLabelForgot>
-					<StyledButton type='submit' value='Login' />
-					<StyledLabelSignUp htmlFor=''>
-						Don’t have an account?<a href=''>Login</a>
-					</StyledLabelSignUp>
-				</StyledFormSection>
-			</StyledLoginBox>
-		</StyledLoginContainer>
+		<StyledMessageContainer $activeMessage={activeMessage}>
+			<StyledMessageBox>
+				<StyledFormMessage action=''>
+					<StyledTitleAdd>ADD NEW MESSAGE</StyledTitleAdd>
+					<StyledLabel htmlFor=''>Title</StyledLabel>
+					<StyledTitleMessage type='text' />
+					<StyledLabel htmlFor=''>Text</StyledLabel>
+					<StyledTextArea name='' id=''></StyledTextArea>
+					<StyledBoxButtons>
+						<StyledCancelButton
+							onClick={() => showAddMessage(setToggleAddMessage)}
+							type='button'
+							value='Cancel'
+						/>
+						<StyledAcceptButton type='button' value='Accept' />
+					</StyledBoxButtons>
+				</StyledFormMessage>
+			</StyledMessageBox>
+		</StyledMessageContainer>
 	);
 };
 

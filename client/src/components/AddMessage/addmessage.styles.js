@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { COLORS } from "../../constants/colors";
+import { FONTS } from "../../constants/fonts";
 
-const StyledLoginContainer = styled.div`
-    display: flex;
+const StyledMessageContainer = styled.div`
+    display: ${({$activeMessage})=>$activeMessage?'flex':'none'};
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -10,8 +10,9 @@ const StyledLoginContainer = styled.div`
     background-color: rgba(84, 58, 20, 0.7);
     backdrop-filter: blur(5px);
     position: fixed;
+    top: 0;
+    left: 0;
     
- 
     @media (max-width: 425px) {
         padding: 0;
     }
@@ -20,11 +21,12 @@ const StyledLoginContainer = styled.div`
     }
     `;
 
-const StyledLoginBox = styled.div`
+const StyledMessageBox = styled.div`
     background-color: white;
     width: 100vw;
     align-self: flex-end;
-    height: 525px;
+    height: 750px;
+    padding: 10px;
     
     @media screen and (width >=425px){
         align-self: center;
@@ -32,8 +34,6 @@ const StyledLoginBox = styled.div`
     @media screen and (width >=768px){
         width: 758px;
         padding: 17px 31px;
-        display: flex;
-        gap: 29px;
     }
     @media screen and (width >=768px){
         width: 867px;
@@ -42,73 +42,48 @@ const StyledLoginBox = styled.div`
 
 `;
 
-const StyledImageSection = styled.div`
-    display: none;
-    background-image: url('/assets/images/imgs/pexels-edwardeyer-10610182.jpg');
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    @media screen and (width >= 768px){
-        display: block;
-    }
-    `;
-
-const StyledFormSection = styled.form`
+const StyledFormMessage = styled.form`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 25px 10px;
-    @media screen and (width >= 768px){
-        width: 100%;
+    font-size: 1rem;
+`;
+const StyledTitleAdd = styled.p`
+    font-size: 1.25rem;
+    font-weight: ${FONTS.bold};
+`;
+const StyledTitleMessage = styled.input`
+    border-style: none;
+    border-bottom: 1px solid black;
+    outline: none;
+`;
+const StyledTextArea = styled.textarea`
+    outline: none;
+    height: 400px;
+    @media screen and (width >=768px){
+        height: 250px;
     }
-    
-`;
-
-const StyledLogo = styled.div`
-    width: 75px;
-    height: 73px;
-    align-self: center;
-    margin-bottom: 24px;
-`;
-
-const StyledTitle = styled.h2`
-    align-self: center;
-    margin: 0;
-    `;
-
-const StyledSubtitle = styled.p`
-    margin: 0;
-    align-self: center;
-    margin-bottom: 24px;
 `;
 const StyledLabel = styled.label`
-    font-size: 0.813rem;
-
+    padding:10px;
 `;
-const StyledLabelSignUp = styled.label`
-    font-size: 0.813rem;
-    align-self: center;
-    padding: 16px;
+const StyledBoxButtons = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
 `;
-const StyledLabelForgot = styled.a`
-    font-size: 0.813rem;
-    align-self: flex-end;
-`;
-
-const StyledInput = styled.input`
-    outline: none;
-    font-size: 1rem;
+const StyledCancelButton = styled.input`
+    background-color: rgba(0,0,0,0.25);
     border-style: none;
-    border-bottom: 1px solid ${COLORS.black};
-    padding: 10px;
-`;
-
-const StyledButton = styled.input`
-    color:${COLORS.white};
-    font-size: 1rem;
     padding: 15px;
-    background-color: ${COLORS.black};
+    width: 102px;
+`;
+const StyledAcceptButton = styled.input`
+    background-color: rgba(240,187,120,0.6);
+    border-style: none;
+    padding: 15px;
+    width: 102px;
+
 `;
 
-export {StyledLabelSignUp,StyledLabelForgot,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}
+export {StyledLabel,StyledTitleAdd,StyledCancelButton,StyledAcceptButton,StyledBoxButtons,StyledTextArea,StyledTitleMessage,StyledFormMessage,StyledMessageBox,StyledMessageContainer}

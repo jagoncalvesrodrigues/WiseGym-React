@@ -21,7 +21,9 @@ const Menu = ({ loginAppears, registerAppears, user, loading }) => {
 		<StyledNavBar $isVisible={toggle}>
 			<StyledNavMobile>
 				<StyledLogo>
-					<img src='assets/images/logos/Logo-wise-gym-w.png' alt='' />
+					<Link to='/'>
+						<img src='assets/images/logos/Logo-wise-gym-w.png' alt='' />
+					</Link>
 				</StyledLogo>
 				<StyledIcons>
 					<StyledHamburger

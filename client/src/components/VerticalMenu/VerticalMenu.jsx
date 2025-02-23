@@ -21,7 +21,9 @@ const VerticalMenu = () => {
 		<>
 			<StyledNavMobileProfile>
 				<StyledLogo>
-					<img src='/assets/images/logos/Logo-wise-gym.png' alt='' />
+					<Link to='/'>
+						<img src='/assets/images/logos/Logo-wise-gym.png' alt='' />
+					</Link>
 				</StyledLogo>
 				<StyledIcons>
 					<StyledHamburger
