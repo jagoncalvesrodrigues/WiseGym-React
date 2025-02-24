@@ -1,12 +1,9 @@
-import { Link } from 'react-router-dom';
 import { StyledBoxOption, StyledOPtionTitle } from './bookingOptions.styles';
 
-const BookingOptions = () => {
+const BookingOptions = ({ name, img }) => {
 	return (
-		<StyledBoxOption>
-			<Link to='/reservation'>
-				<StyledOPtionTitle>BOXING</StyledOPtionTitle>
-			</Link>
+		<StyledBoxOption $img={img}>
+			<StyledOPtionTitle>{name}</StyledOPtionTitle>
 		</StyledBoxOption>
 	);
 };

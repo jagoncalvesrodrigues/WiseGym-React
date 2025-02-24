@@ -4,7 +4,7 @@ import { FONTS } from "../../constants/fonts";
 const StyledBoxOption = styled.div`
     width: 100%;
     height: 200px;
-    background-image: url('/assets/images/imgs/box-booking.jpg');
+    background-image: url(${({$img})=>$img});
     background-position: center;
     background-size: cover;
     display: flex;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
+import { FONTS } from "../../constants/fonts";
 
 const StyledMainBoxBooking =  styled.div`
     @media screen and (width >= 768px){
@@ -21,6 +22,13 @@ const StyledBoxCalendar =  styled.div`
 const StyledBoxReserve =  styled.div`
     width: 100%;
     height: 100%;
+    padding: 10px;
+    `;
+const StyledMonthYear =  styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
 `;
 const StyledBoxDay =  styled.div`
     width: 60px;
@@ -32,5 +40,11 @@ const StyledBoxDay =  styled.div`
     align-self: center;
     justify-self: center;
 `;
+const StyledTitleMonth =  styled.p`
+    font-weight: ${FONTS.bold};
+`;
+const StyledBoxDays =  styled.div`
+    
+`;
 
-export {StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
+export {StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
