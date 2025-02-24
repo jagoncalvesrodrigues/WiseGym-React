@@ -4,6 +4,7 @@ import {
 	StyledBoxInfoSubscription,
 	StyledBoxSuscription,
 	StyledButtonChange,
+	StyledDescription,
 	StyledImageSubscription,
 	StyledTitleSubscription
 } from './suscription.styles';
@@ -16,12 +17,12 @@ const Subscription = () => {
 				<StyledTitleSubscription>YOUR SUBSCRIPTION</StyledTitleSubscription>
 				<StyledBoxInfoSub>
 					<StyledBold>PRO</StyledBold>
-					<div>
+					<StyledDescription>
 						<p>Subscription to all martial art</p>
 						<p>Unlimited classes</p>
 						<p>Unlimited use of Fitness Center</p>
 						<p>Space reservation</p>
-					</div>
+					</StyledDescription>
 				</StyledBoxInfoSub>
 				<StyledBoxInfoSub>
 					<StyledBold>400$</StyledBold>

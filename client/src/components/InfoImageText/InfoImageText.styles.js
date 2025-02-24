@@ -12,6 +12,13 @@ const StyledBoxText = styled.div`
     
     & h2 {
         font-size: 3rem;
+        @media screen and (width>=1024px){
+            font-size: 2rem;
+            
+        }
+        @media screen and (width>=1212px){
+            font-size: 3rem;
+        }
     }
     & p {
         font-weight: ${FONTS.regular};

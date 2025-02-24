@@ -18,17 +18,33 @@ const StyledBoxCalendar =  styled.div`
     height: 330px;
     display: grid;
     grid-template-columns: repeat(5,1fr);
+    @media screen and (width >= 1024px){
+        height: 660px;
+    }
+
 `;
 const StyledBoxReserve =  styled.div`
     width: 100%;
     height: 100%;
     padding: 10px;
-    `;
+    display: ${({$showCalendarBox})=>($showCalendarBox ? "flex":"none")};
+    flex-direction: column;
+    gap: 30px;
+    @media screen and (width >= 768px){
+        padding:40px;
+    }
+    @media screen and (width >= 1024px){
+        flex-direction: row;    
+    }
+`;
 const StyledMonthYear =  styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     gap: 10px;
+`;
+const StyledBoxOptions =  styled.div`
+    display: ${({$showCalendarBox})=>($showCalendarBox ? "none":"block")};
+    
 `;
 const StyledBoxDay =  styled.div`
     width: 60px;
@@ -39,6 +55,10 @@ const StyledBoxDay =  styled.div`
     justify-content: center;
     align-self: center;
     justify-self: center;
+    @media screen and (width >= 1024px){
+        width: 90px;
+        height: 90px;
+    }
 `;
 const StyledTitleMonth =  styled.p`
     font-weight: ${FONTS.bold};
@@ -46,5 +66,51 @@ const StyledTitleMonth =  styled.p`
 const StyledBoxDays =  styled.div`
     
 `;
+const StyledBoxHours =  styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+`;
+const StyledHour =  styled.div`
+    background-color: ${COLORS.egg};
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+const StyledBoxDesktopCalendar =  styled.div`
+    @media screen and (width >= 1024px){
+        width: 70%;
+    }
+`;
+const StyledBoxDesktopHours =  styled.div`
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px black;
+    @media screen and (width >= 1024px){
+        border-left: solid 1px black;
+        border-top: none;
+        width: 30%;
+        padding: 20px;
+    }
+`;
+const StyledButtonReserve =  styled.button`
+    margin-top: auto;
+    background-color: ${COLORS.brown};
+    color: white;
+    border-style: none;
+    height: 44px;
+`;
+const StyledCloseReserve =  styled.img`
+        position: absolute;
+        top: 115px;
+        right: 25px;
+        width: 40px;
+    @media screen and (width >= 768px){
+        right: 25px;
+        top:25px;
+    }
+`;
 
-export {StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
+export {StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
