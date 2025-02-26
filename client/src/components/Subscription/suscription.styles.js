@@ -3,10 +3,12 @@ import { COLORS } from "../../constants/colors";
 import { FONTS } from "../../constants/fonts";
 
 const StyledBoxSuscription = styled.div`
+    display: none;
     width: 100%;
     height: 984px;
     @media screen and (width>=1024px){
         display: flex;
+        display: none;
     }
 `;
 const StyledImageSubscription = styled.div`

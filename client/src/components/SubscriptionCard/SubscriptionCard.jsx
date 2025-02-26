@@ -8,9 +8,9 @@ import {
 	StyledTitle
 } from './SubscriptionCard.styles';
 
-const SubscriptionCard = ({ sub, position, price, img, color }) => {
+const SubscriptionCard = ({ sub, position, price, img, color, onClick }) => {
 	return (
-		<StyledCard $color={color}>
+		<StyledCard onClick={onClick} $color={color}>
 			<StyledCardImage $position={position} $img={img} />
 			<StyledTextCard>
 				<StyledTitle>{sub}</StyledTitle>

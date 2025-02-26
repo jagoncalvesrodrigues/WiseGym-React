@@ -23,7 +23,6 @@ const Router = () => {
 				</Route>
 				<Route element={<LayoutLogged />}>
 					<Route path='/booking' element={<Booking />} />
-					<Route path='/reservation' element={<Booking />} />
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/reservations' element={<Reservations />} />
 					<Route path='/space' element={<Spaces />} />
