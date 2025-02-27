@@ -12,8 +12,10 @@ import {
 	StyledNameButtons
 } from './messages.styles';
 import AddMessage from '../../components/AddMessage/AddMessage';
+import { useNavigate } from 'react-router-dom';
 
 const Messages = () => {
+	const navigate = useNavigate();
 	const [toggleDate, setToggleDate] = useState(false);
 	const [toggleAddMessage, setToggleAddMessage] = useState(false);
 	console.log(toggleDate);

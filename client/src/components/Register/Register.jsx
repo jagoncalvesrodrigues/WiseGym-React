@@ -14,8 +14,15 @@ import {
 	StyledSubtitle,
 	StyledTitle
 } from './register.styles';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/Auth.context';
 
 const Register = ({ register, registerAppears }) => {
+	const { user, loading } = useContext(AuthContext);
+	const navigate = useNavigate();
+	if (loading) return <h2>Loading...</h2>;
+	if (user) return <Navigate to='/' replace />;
 	return (
 		<StyledLoginContainer
 			onClick={e => {
@@ -29,7 +36,7 @@ const Register = ({ register, registerAppears }) => {
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
-				<StyledFormSection onSubmit={registerUser}>
+				<StyledFormSection onSubmit={event => registerUser(event, navigate)}>
 					<StyledLogo>
 						<img src='public/assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
@@ -38,7 +45,7 @@ const Register = ({ register, registerAppears }) => {
 					<StyledLabel htmlFor=''>Email</StyledLabel>
 					<StyledInput type='email' name='email' id='email' />
 					<StyledLabel htmlFor=''>Password</StyledLabel>
-					<StyledInput type='password' name='password' id='password' />
+					<StyledInput type='password' name='pass' id='pass' />
 					<StyledButton type='submit' value='Sign Up' />
 					<StyledLabelSignUp htmlFor=''>
 						Do you have an account?<a href=''>Login</a>
@@ -49,17 +56,24 @@ const Register = ({ register, registerAppears }) => {
 	);
 };
 
-const registerUser = async event => {
+const registerUser = async (event, navigate) => {
 	event.preventDefault();
-	//guardamos la info del campo en una variable
 	const email = event.target.email.value;
-	const pass = event.target.password.value;
+	const pass = event.target.pass.value;
 	try {
 		await createUserWithEmailAndPassword(auth, email, pass);
-		console.log('User Logged');
+		console.log('user registered');
 		event.target.reset();
+
+		//conectar a mongo para que envie la info
+		await fetch('http://localhost:3000/api/users', {
+			method: 'POST',
+			body: JSON.stringify({ email }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+		navigate('/');
 	} catch (err) {
-		console.error('Error login user:', err.code, err.message);
+		console.error('ERROR registering user: ', err.code, err.message);
 	}
 };
 

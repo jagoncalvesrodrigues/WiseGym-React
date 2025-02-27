@@ -4,6 +4,7 @@ const port = process.env.PORT
 const cors = require('cors');
 const mongoose = require('mongoose');
 const messagesRoutes = require('./routes/messages.routes');
+const usersRoutes = require('./routes/users.routes');
 // const usersRoutes = require('./routes/users.routes');
 //acceso a las variables de entorno, teniendo acceso a lo que haya en .env
 require('dotenv').config();
@@ -20,6 +21,7 @@ app.use(express.json());
 
 //lo juntamos con lo que tenemos
 app.use('/api/messages',messagesRoutes);
+app.use('/api/users',usersRoutes);
 
 
 //conexion a la db

@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import {
 	StyledAcceptButton,
 	StyledBoxButtons,
@@ -12,9 +11,12 @@ import {
 	StyledTitleMessage
 } from './addmessage.styles';
 
-const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
-	const navigate = useNavigate();
-
+const AddMessage = ({
+	navigate,
+	activeMessage,
+	showAddMessage,
+	setToggleAddMessage
+}) => {
 	return (
 		<StyledMessageContainer $activeMessage={activeMessage}>
 			<StyledMessageBox>
@@ -53,7 +55,7 @@ const createMessage = async (event, navigate) => {
 		body: JSON.stringify({ title, message }),
 		headers: { 'Content-Type': 'application/json' }
 	});
-	navigate('/');
+	navigate('/messages');
 };
 
 export default AddMessage;

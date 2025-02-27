@@ -44,7 +44,7 @@ const VerticalMenu = () => {
 				</StyledBoxProfile>
 				{MENUVERTICAL.map(option => (
 					<StyledMenuVOption key={option.name}>
-						<Link>
+						<Link to={option.route}>
 							<img src={option.icon} alt='' />
 						</Link>
 						<Link to={option.route}>
