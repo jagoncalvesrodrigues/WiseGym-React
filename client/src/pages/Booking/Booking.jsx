@@ -18,7 +18,6 @@ import {
 } from './booking.styles';
 import { useState } from 'react';
 import { MARTIALARTS } from '../../constants/martialArts';
-import AddSubscription from '../../components/AddSubscription/AddSubscription';
 
 const Booking = () => {
 	// const [selectedDate, setSelectedDate] = useState(null);
@@ -26,54 +25,52 @@ const Booking = () => {
 	const [showCalendarBox, setshowCalendarBox] = useState(false);
 	console.log(showCalendarBox);
 	return (
-		<>
-			<AddSubscription />
-			<StyledMainBoxBooking>
-				<StyledBoxOptions $showCalendarBox={showCalendarBox}>
-					{MARTIALARTS.map((ma, index) => (
-						<BookingOptions
-							key={index}
-							name={ma.text}
-							img={ma.img}
-							onClick={() => {
-								setSelectedMA(index);
-								showCalendar(setshowCalendarBox);
-							}}
-						/>
-					))}
-				</StyledBoxOptions>
-				<StyledBoxReserve $showCalendarBox={showCalendarBox}>
-					<StyledBoxDesktopCalendar>
-						<StyledMonthYear>
-							<StyledTitleMonth>{monthName}</StyledTitleMonth>
-							<p>{year}</p>
-						</StyledMonthYear>
-						<StyledBoxDays></StyledBoxDays>
-						<StyledBoxCalendar>
-							{filteredDays.map((day, index) => (
-								<StyledBoxDay key={index}>{format(day, 'd')}</StyledBoxDay>
-							))}
-						</StyledBoxCalendar>
-					</StyledBoxDesktopCalendar>
-					<StyledBoxDesktopHours>
-						<StyledCloseReserve
-							onClick={() => showCalendar(setshowCalendarBox)}
-							src='/assets/images/icon/Close-B.svg'
-							alt=''
-						/>
-						<StyledMonthYear>
-							<p>{dayName}</p>
-						</StyledMonthYear>
-						<StyledBoxHours>
-							{MARTIALARTS[selectedMA].hours.map(ma => (
-								<StyledHour key={ma}>{ma}</StyledHour>
-							))}
-						</StyledBoxHours>
-						<StyledButtonReserve>RESERVE</StyledButtonReserve>
-					</StyledBoxDesktopHours>
-				</StyledBoxReserve>
-			</StyledMainBoxBooking>
-		</>
+		
+		<StyledMainBoxBooking>
+			<StyledBoxOptions $showCalendarBox={showCalendarBox}>
+				{MARTIALARTS.map((ma, index) => (
+					<BookingOptions
+						key={index}
+						name={ma.text}
+						img={ma.img}
+						onClick={() => {
+							setSelectedMA(index);
+							showCalendar(setshowCalendarBox);
+						}}
+					/>
+				))}
+			</StyledBoxOptions>
+			<StyledBoxReserve $showCalendarBox={showCalendarBox}>
+				<StyledBoxDesktopCalendar>
+					<StyledMonthYear>
+						<StyledTitleMonth>{monthName}</StyledTitleMonth>
+						<p>{year}</p>
+					</StyledMonthYear>
+					<StyledBoxDays></StyledBoxDays>
+					<StyledBoxCalendar>
+						{filteredDays.map((day, index) => (
+							<StyledBoxDay key={index}>{format(day, 'd')}</StyledBoxDay>
+						))}
+					</StyledBoxCalendar>
+				</StyledBoxDesktopCalendar>
+				<StyledBoxDesktopHours>
+					<StyledCloseReserve
+						onClick={() => showCalendar(setshowCalendarBox)}
+						src='/assets/images/icon/Close-B.svg'
+						alt=''
+					/>
+					<StyledMonthYear>
+						<p>{dayName}</p>
+					</StyledMonthYear>
+					<StyledBoxHours>
+						{MARTIALARTS[selectedMA].hours.map(ma => (
+							<StyledHour key={ma}>{ma}</StyledHour>
+						))}
+					</StyledBoxHours>
+					<StyledButtonReserve>RESERVE</StyledButtonReserve>
+				</StyledBoxDesktopHours>
+			</StyledBoxReserve>
+		</StyledMainBoxBooking>
 	);
 };
 

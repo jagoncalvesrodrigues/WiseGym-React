@@ -22,6 +22,7 @@ const Messages = () => {
 	return (
 		<>
 			<AddMessage
+				navigate={navigate}
 				activeMessage={toggleAddMessage}
 				showAddMessage={showAddMessage}
 				setToggleAddMessage={setToggleAddMessage}
