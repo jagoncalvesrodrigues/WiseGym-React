@@ -14,8 +14,11 @@ import {
 	StyledTitle
 } from './login.styles';
 import { auth } from '../../config/firebase.config';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ login, loginAppears }) => {
+	const navigate = useNavigate();
+
 	return (
 		<StyledLoginContainer
 			onClick={e => {
@@ -29,7 +32,7 @@ const Login = ({ login, loginAppears }) => {
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
-				<StyledFormSection onSubmit={loginUser}>
+				<StyledFormSection onSubmit={event => loginUser(event, navigate)}>
 					<StyledLogo>
 						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
@@ -50,7 +53,7 @@ const Login = ({ login, loginAppears }) => {
 	);
 };
 
-const loginUser = async event => {
+const loginUser = async (event, navigate) => {
 	event.preventDefault();
 	//guardamos la info del campo en una variable
 	const email = event.target.email.value;
@@ -59,6 +62,7 @@ const loginUser = async event => {
 		await signInWithEmailAndPassword(auth, email, pass);
 		console.log('User Logged');
 		event.target.reset();
+		navigate('/');
 	} catch (err) {
 		console.error('Error login user:', err.code, err.message);
 	}
