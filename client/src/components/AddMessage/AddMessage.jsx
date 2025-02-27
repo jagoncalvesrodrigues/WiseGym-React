@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
 	StyledAcceptButton,
 	StyledBoxButtons,
@@ -12,27 +13,47 @@ import {
 } from './addmessage.styles';
 
 const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
+	const navigate = useNavigate();
+
 	return (
 		<StyledMessageContainer $activeMessage={activeMessage}>
 			<StyledMessageBox>
-				<StyledFormMessage action=''>
+				<StyledFormMessage onSubmit={event => createMessage(event, navigate)}>
 					<StyledTitleAdd>ADD NEW MESSAGE</StyledTitleAdd>
 					<StyledLabel htmlFor=''>Title</StyledLabel>
-					<StyledTitleMessage type='text' />
+					<StyledTitleMessage type='text' name='title' id='title' />
 					<StyledLabel htmlFor=''>Text</StyledLabel>
-					<StyledTextArea name='' id=''></StyledTextArea>
+					<StyledTextArea
+						type='textarea'
+						name='message'
+						id='message'
+					></StyledTextArea>
 					<StyledBoxButtons>
 						<StyledCancelButton
 							onClick={() => showAddMessage(setToggleAddMessage)}
 							type='button'
 							value='Cancel'
 						/>
-						<StyledAcceptButton type='button' value='Accept' />
+						<StyledAcceptButton type='submit' value='Accept' />
 					</StyledBoxButtons>
 				</StyledFormMessage>
 			</StyledMessageBox>
 		</StyledMessageContainer>
 	);
+};
+
+const createMessage = async (event, navigate) => {
+	event.preventDefault();
+	const title = event.target.title.value;
+	const message = event.target.message.value;
+
+	//conectar a mongo para que envie la info
+	await fetch('http://localhost:3000/api/messages', {
+		method: 'POST',
+		body: JSON.stringify({ title, message }),
+		headers: { 'Content-Type': 'application/json' }
+	});
+	navigate('/');
 };
 
 export default AddMessage;
