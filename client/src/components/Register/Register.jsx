@@ -19,10 +19,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth.context';
 
 const Register = ({ register, registerAppears }) => {
+	// const [userreg, setUserreg] = useState({});
+
 	const { user, loading } = useContext(AuthContext);
 	const navigate = useNavigate();
 	if (loading) return <h2>Loading...</h2>;
 	if (user) return <Navigate to='/' replace />;
+
+	//esta peticion se hace para que se ejecute solo una vez
+	// useEffect(() => {
+	// 	registerUser(setUserreg);
+	// }, []);
+
 	return (
 		<StyledLoginContainer
 			onClick={e => {
@@ -61,14 +69,19 @@ const registerUser = async (event, navigate) => {
 	const email = event.target.email.value;
 	const pass = event.target.pass.value;
 	try {
-		await createUserWithEmailAndPassword(auth, email, pass);
+		const firebaseResponse = await createUserWithEmailAndPassword(
+			auth,
+			email,
+			pass
+		);
 		console.log('user registered');
 		event.target.reset();
+		const id = firebaseResponse.user.uid;
 
-		//conectar a mongo para que envie la info
+		// conectar a mongo para que envie la info
 		await fetch('http://localhost:3000/api/users', {
 			method: 'POST',
-			body: JSON.stringify({ email }),
+			body: JSON.stringify({ _id: id, email }),
 			headers: { 'Content-Type': 'application/json' }
 		});
 		navigate('/');

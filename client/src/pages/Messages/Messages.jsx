@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Message from '../../components/Message/Message';
 import {
 	StyledBoxDate,
@@ -12,17 +12,17 @@ import {
 	StyledNameButtons
 } from './messages.styles';
 import AddMessage from '../../components/AddMessage/AddMessage';
-import { useNavigate } from 'react-router-dom';
 
 const Messages = () => {
-	const navigate = useNavigate();
 	const [toggleDate, setToggleDate] = useState(false);
 	const [toggleAddMessage, setToggleAddMessage] = useState(false);
 	console.log(toggleDate);
+	useEffect(() => {
+		console.log('Messages component mounted');
+	}, []);
 	return (
 		<>
 			<AddMessage
-				navigate={navigate}
 				activeMessage={toggleAddMessage}
 				showAddMessage={showAddMessage}
 				setToggleAddMessage={setToggleAddMessage}

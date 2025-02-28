@@ -11,16 +11,11 @@ import {
 	StyledTitleMessage
 } from './addmessage.styles';
 
-const AddMessage = ({
-	navigate,
-	activeMessage,
-	showAddMessage,
-	setToggleAddMessage
-}) => {
+const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
 	return (
 		<StyledMessageContainer $activeMessage={activeMessage}>
 			<StyledMessageBox>
-				<StyledFormMessage onSubmit={event => createMessage(event, navigate)}>
+				<StyledFormMessage onSubmit={event => createMessage(event)}>
 					<StyledTitleAdd>ADD NEW MESSAGE</StyledTitleAdd>
 					<StyledLabel htmlFor=''>Title</StyledLabel>
 					<StyledTitleMessage type='text' name='title' id='title' />
@@ -44,7 +39,7 @@ const AddMessage = ({
 	);
 };
 
-const createMessage = async (event, navigate) => {
+const createMessage = async event => {
 	event.preventDefault();
 	const title = event.target.title.value;
 	const message = event.target.message.value;
@@ -55,7 +50,6 @@ const createMessage = async (event, navigate) => {
 		body: JSON.stringify({ title, message }),
 		headers: { 'Content-Type': 'application/json' }
 	});
-	navigate('/messages');
 };
 
 export default AddMessage;

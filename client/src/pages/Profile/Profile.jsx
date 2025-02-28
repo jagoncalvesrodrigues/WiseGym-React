@@ -78,6 +78,7 @@ const Profile = () => {
 		</>
 	);
 };
+
 const logout = async () => {
 	await signOut(auth);
 };

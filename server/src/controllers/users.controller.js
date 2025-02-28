@@ -19,4 +19,43 @@ usersController.createNewUser = async (req, res) => {
     }
 };
 
+usersController.getUserById = async (req,res)=>{
+    const {id} = req.params;
+    try{
+        const user = await UserModel.findById(id);
+        if(!message){
+            return res.status(404).json({error:'User not found'})
+        }
+        return res.status(200).json(message);
+    }catch(error){
+        return res.status(500).json({error:'Error reading database'});
+    }
+}
+
+usersController.updateUser = async (req,res)=>{
+    const {id}=req.params;
+    const newUser = req.body;
+    try{
+        const userToUpdate = await UserModel.findById(id);
+        if(!userToUpdate){
+            return res.status(404).json({error:'User not found'})
+        }
+        await UserModel.updateOne({_id:id},{$set:{...newUser}});
+        const allMessages = await UserModel.find()
+        return res.status(200).json(allMessages);
+    }catch(error){
+        return res.status(500).json({error:'Error reading/write database'+error});
+    }
+}
+
+usersController.getAllUsers = async (req,res)=>{
+    try{
+        const allUsers = await UserModel.find();
+        return res.status(200).json(allUsers);
+    }catch(error){
+        return res.status(500).json({error:'Error reading database'});
+    }
+}
+
+
 module.exports = usersController;
