@@ -75,7 +75,7 @@ const registerUser = async (event, navigate) => {
 			pass
 		);
 		console.log('user registered');
-		event.target.reset();
+		// event.target.reset();
 		const id = firebaseResponse.user.uid;
 
 		// conectar a mongo para que envie la info

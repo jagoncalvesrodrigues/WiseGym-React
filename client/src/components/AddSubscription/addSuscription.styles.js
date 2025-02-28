@@ -23,7 +23,7 @@ const StyledSubscriptionContainer = styled.div`
     }
 `;
 
-const StyledSuscriptionBox = styled.div`
+const StyledSuscriptionBox = styled.form`
     background-color: white;
     width: 100vw;
     align-self: flex-end;

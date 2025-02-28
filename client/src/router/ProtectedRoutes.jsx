@@ -4,6 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoute = () => {
 	const { user, loading } = useContext(AuthContext);
+	console.log('loading', loading);
 	if (loading) return <h1>Loading...</h1>;
 	if (!user) return <Navigate to='/' replace />;
 
