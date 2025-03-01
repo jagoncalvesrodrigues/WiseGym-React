@@ -11,7 +11,7 @@ import {
 	StyledTitleMessage
 } from './addmessage.styles';
 
-const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
+const AddMessage = ({ activeMessage, showAddMessage }) => {
 	return (
 		<StyledMessageContainer $activeMessage={activeMessage}>
 			<StyledMessageBox>
@@ -27,7 +27,7 @@ const AddMessage = ({ activeMessage, showAddMessage, setToggleAddMessage }) => {
 					></StyledTextArea>
 					<StyledBoxButtons>
 						<StyledCancelButton
-							onClick={() => showAddMessage(setToggleAddMessage)}
+							onClick={showAddMessage}
 							type='button'
 							value='Cancel'
 						/>

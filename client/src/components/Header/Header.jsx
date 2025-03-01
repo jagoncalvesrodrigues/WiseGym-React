@@ -10,40 +10,29 @@ const Header = () => {
 	const { user, loading } = useContext(AuthContext);
 	const [login, setLogin] = useState(false);
 	const [register, setRegister] = useState(false);
-	console.log(user);
-	console.log(login);
 	return (
 		<StyledBoxHeader>
 			{!user && !loading && (
 				<>
-					<StyledJoinNow
-						onClick={() => registerAppears(setRegister)}
-						$bg={COLORS.white}
-					>
+					<StyledJoinNow onClick={() => setLogin(!login)} $bg={COLORS.white}>
 						<p>JOIN NOW</p>
 					</StyledJoinNow>
 				</>
 			)}
 			<Register
-				registerAppears={() => registerAppears(setRegister)}
+				registerAppears={() => setRegister(!register)}
 				register={register}
 			/>
-			<Login loginAppears={() => loginAppears(setLogin)} login={login} />
+			<Login loginAppears={() => setLogin(!login)} login={login} />
 			<Menu
 				user={user}
 				loading={loading}
-				loginAppears={() => loginAppears(setLogin)}
-				registerAppears={() => registerAppears(setRegister)}
+				loginAppears={() => setLogin(!login)}
+				login={login}
+				registerAppears={() => setRegister(!register)}
 			/>
 		</StyledBoxHeader>
 	);
-};
-const loginAppears = setLogin => {
-	setLogin(estado => !estado);
-};
-
-const registerAppears = setRegister => {
-	setRegister(estado => !estado);
 };
 
 export default Header;

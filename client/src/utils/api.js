@@ -1,7 +1,23 @@
 
 
-// const URL = 'http://localhost:3000'
-// const API_URL = '/api/users'
+const URL = 'http://localhost:3000'
+const API_URL = '/api/users'
+
+const getUserById = async (user, setUserData) => {
+	//si user existe accede a uid
+	if (user?.uid) {
+		try {
+			const response = await fetch(
+				`${URL}${API_URL}/${user.uid}`
+			);
+			if (!response.ok) throw new Error('Error al obtener datos del usuario');
+			const data = await response.json();
+			setUserData(data);
+		} catch (err) {
+			console.error('Error al obtener datos del usuario:', err);
+		}
+	}
+};
 
 // const createUser = async newData =>{
 //     try {
@@ -51,4 +67,4 @@
 //     }
 // };
 
-// export {createUser}
+export {getUserById}

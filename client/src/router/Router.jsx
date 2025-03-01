@@ -18,9 +18,7 @@ const Router = () => {
 			</Route>
 			<Route path='/store' element={<Store />} />
 			<Route element={<ProtectedRoute />}>
-				<Route path='/messages' element={<Layout />}>
-					<Route index element={<Messages />} />
-				</Route>
+				<Route path='/messages' element={<Messages />} />
 				<Route element={<LayoutLogged />}>
 					<Route path='/booking' element={<Booking />} />
 					<Route path='/profile' element={<Profile />} />

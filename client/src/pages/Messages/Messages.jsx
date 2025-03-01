@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Message from '../../components/Message/Message';
 import {
 	StyledBoxDate,
@@ -12,31 +12,39 @@ import {
 	StyledNameButtons
 } from './messages.styles';
 import AddMessage from '../../components/AddMessage/AddMessage';
-
+import { AuthContext } from '../../contexts/Auth.context';
+import { getUserById } from '../../utils/api';
 const Messages = () => {
+	const { user } = useContext(AuthContext);
+	const [userData, setUserData] = useState(null);
 	const [toggleDate, setToggleDate] = useState(false);
 	const [toggleAddMessage, setToggleAddMessage] = useState(false);
-	console.log(toggleDate);
+	const [messages, setMessages] = useState([]);
 	useEffect(() => {
-		console.log('Messages component mounted');
-	}, []);
+		getAllMessages(setMessages), getUserById(user, setUserData);
+	}, [user]);
 	return (
 		<>
 			<AddMessage
 				activeMessage={toggleAddMessage}
-				showAddMessage={showAddMessage}
-				setToggleAddMessage={setToggleAddMessage}
+				showAddMessage={() => setToggleAddMessage(!toggleAddMessage)}
 			/>
 			<StyledMainMessages>
 				<StyledButtons>
-					<StyledBoxDate onClick={() => shownDate(setToggleDate)}>
+					<StyledBoxDate onClick={() => setToggleDate(!toggleDate)}>
 						<StyledIconDate src='/assets/images/icon/Date.svg' alt='' />
 						<StyledNameButtons>DATE</StyledNameButtons>
 					</StyledBoxDate>
-					<StyledBoxDate onClick={() => showAddMessage(setToggleAddMessage)}>
-						<StyledIconDate src='/assets/images/icon/Add.svg' alt='' />
-						<StyledNameButtons>ADD</StyledNameButtons>
-					</StyledBoxDate>
+					{userData?.role === 'admin' && (
+						<>
+							<StyledBoxDate
+								onClick={() => setToggleAddMessage(!toggleAddMessage)}
+							>
+								<StyledIconDate src='/assets/images/icon/Add.svg' alt='' />
+								<StyledNameButtons>ADD</StyledNameButtons>
+							</StyledBoxDate>
+						</>
+					)}
 				</StyledButtons>
 				<StyledModifyDate $isVisible={toggleDate}>
 					<p>Modify Date</p>
@@ -50,19 +58,17 @@ const Messages = () => {
 					</StyledBoxDates>
 				</StyledModifyDate>
 				<StyledBoxMessages>
-					<Message />
+					<Message message={messages} />
 				</StyledBoxMessages>
 			</StyledMainMessages>
 		</>
 	);
 };
 
-const shownDate = setToggleDate => {
-	setToggleDate(estado => !estado);
-};
-
-const showAddMessage = setToggleAddMessage => {
-	setToggleAddMessage(estadoM => !estadoM);
+const getAllMessages = async setMessages => {
+	const response = await fetch('http://localhost:3000/api/messages');
+	const mens = await response.json();
+	setMessages(mens);
 };
 
 export default Messages;

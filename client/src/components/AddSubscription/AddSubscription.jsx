@@ -83,9 +83,9 @@ const AddSubscription = ({ subscription, subscriptionAppears }) => {
 							<StyledLabel htmlFor=''>MuayThai</StyledLabel>
 							<input
 								type='checkbox'
-								name='K1'
-								id='K1'
-								checked={selectedSports.K1}
+								name='MuayThai'
+								id='MuayThai'
+								checked={selectedSports.MuayThai}
 								onChange={e =>
 									handleCheckboxChange(
 										e,
@@ -136,15 +136,14 @@ const handleCheckboxChange = (
 ) => {
 	const { name, checked } = event.target;
 
-	// Count how many are currently selected
+	// Cuenta cuantos hay seleccionados
 	const selectedCount = Object.values(selectedSports).filter(Boolean).length;
 
-	// If selecting a new checkbox, check if it exceeds the limit
+	// Mira si se excedio el limite
 	if (checked && selectedCount >= maxSelected) {
-		return; // Prevent selection if it exceeds the limit
+		return;
 	}
-
-	// Update the state of the selected checkboxes
+	// actualizamos el estado
 	setSelectedSports(prevState => ({
 		...prevState,
 		[name]: checked

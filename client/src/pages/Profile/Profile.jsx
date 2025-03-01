@@ -18,6 +18,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import Subscription from '../../components/Subscription/Subscription';
 import AddSubscription from '../../components/AddSubscription/AddSubscription';
+import { getUserById } from '../../utils/api';
 
 const Profile = () => {
 	const [userData, setUserData] = useState(null);
@@ -49,7 +50,7 @@ const Profile = () => {
 						<StyledProfileForm>
 							<label htmlFor=''>Name </label>
 							<StyledBoxInputEdit>
-								<StyledInput type='text' />
+								<StyledInput type='text' defaultValue={userData?.name} />
 								<img src='/assets/images/icon/Edit.svg' alt='' />
 							</StyledBoxInputEdit>
 							<label htmlFor=''>Email</label>
@@ -108,20 +109,20 @@ const closeSubscriptionModal = setSelectedSubscription => {
 // 	setSuscription(estado => !estado);
 // };
 
-const getUserById = async (user, setUserData) => {
-	//si user existe accede a uid
-	if (user?.uid) {
-		try {
-			const response = await fetch(
-				`http://localhost:3000/api/users/${user.uid}`
-			);
-			if (!response.ok) throw new Error('Error al obtener datos del usuario');
-			const data = await response.json();
-			setUserData(data);
-		} catch (err) {
-			console.error('Error al obtener datos del usuario:', err);
-		}
-	}
-};
+// const getUserById = async (user, setUserData) => {
+// 	//si user existe accede a uid
+// 	if (user?.uid) {
+// 		try {
+// 			const response = await fetch(
+// 				`http://localhost:3000/api/users/${user.uid}`
+// 			);
+// 			if (!response.ok) throw new Error('Error al obtener datos del usuario');
+// 			const data = await response.json();
+// 			setUserData(data);
+// 		} catch (err) {
+// 			console.error('Error al obtener datos del usuario:', err);
+// 		}
+// 	}
+// };
 
 export default Profile;
