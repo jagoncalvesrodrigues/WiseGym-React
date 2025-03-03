@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FONTS } from "../../constants/fonts";
+import { COLORS } from "../../constants/colors";
 
 const StyledBoxMessage =  styled.div`
     width: 100%;
@@ -27,4 +28,29 @@ const StyledTextMessage =  styled.p`
     font-weight: ${FONTS.regular};
 `;
 
-export {StyledTextMessage,StyledHeaderMessage,StyledTitle,StyledBoxMessage}
+const StyledNoMessages =  styled.div`
+    display: flex;
+    align-items:center;
+    justify-content: center;
+`;
+const StyledBoxAdmin =  styled.div`
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+`;
+
+const StyledBoxDeleted = styled.div`
+    position: fixed;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    top:40%;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    background-color: ${COLORS.egg};
+    box-shadow: 4px ;
+`;
+
+export {StyledBoxDeleted,StyledBoxAdmin,StyledNoMessages,StyledTextMessage,StyledHeaderMessage,StyledTitle,StyledBoxMessage}

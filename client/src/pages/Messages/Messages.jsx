@@ -20,12 +20,14 @@ const Messages = () => {
 	const [toggleDate, setToggleDate] = useState(false);
 	const [toggleAddMessage, setToggleAddMessage] = useState(false);
 	const [messages, setMessages] = useState([]);
+
 	useEffect(() => {
 		getAllMessages(setMessages), getUserById(user, setUserData);
 	}, [user]);
 	return (
 		<>
 			<AddMessage
+				getAllMessages={() => getAllMessages(setMessages)}
 				activeMessage={toggleAddMessage}
 				showAddMessage={() => setToggleAddMessage(!toggleAddMessage)}
 			/>
@@ -58,7 +60,11 @@ const Messages = () => {
 					</StyledBoxDates>
 				</StyledModifyDate>
 				<StyledBoxMessages>
-					<Message message={messages} />
+					<Message
+						role={userData?.role}
+						message={messages}
+						refreshMessages={() => getAllMessages(setMessages)}
+					/>
 				</StyledBoxMessages>
 			</StyledMainMessages>
 		</>

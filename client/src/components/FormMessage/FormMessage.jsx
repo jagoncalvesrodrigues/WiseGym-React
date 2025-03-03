@@ -9,35 +9,40 @@ import {
 	StyledTextArea,
 	StyledTitleAdd,
 	StyledTitleMessage
-} from './addmessage.styles';
+} from './formMessage.styles';
 
-const AddMessage = ({ activeMessage, showAddMessage, getAllMessages }) => {
+const FormMessage = ({ id, title, textMen, activeForm, showUpdateForm }) => {
 	return (
-		<StyledMessageContainer $activeMessage={activeMessage}>
+		<StyledMessageContainer $activeMessage={activeForm}>
 			<StyledMessageBox>
 				<StyledFormMessage
-					onSubmit={async event => {
-						await createMessage(event); // Espera a que se cree el mensaje
-						showAddMessage(); // Cierra el formulario
-						getAllMessages(); // Refresca los mensajes
+					onSubmit={event => {
+						updateMessage(event, id);
+						showUpdateForm();
 					}}
 				>
 					<StyledTitleAdd>ADD NEW MESSAGE</StyledTitleAdd>
 					<StyledLabel htmlFor=''>Title</StyledLabel>
-					<StyledTitleMessage type='text' name='title' id='title' />
+					<StyledTitleMessage
+						type='text'
+						name='title'
+						id='title'
+						defaultValue={title}
+					/>
 					<StyledLabel htmlFor=''>Text</StyledLabel>
 					<StyledTextArea
 						type='textarea'
 						name='message'
 						id='message'
+						defaultValue={textMen}
 					></StyledTextArea>
 					<StyledBoxButtons>
 						<StyledCancelButton
-							onClick={showAddMessage}
+							onClick={showUpdateForm}
 							type='button'
 							value='Cancel'
 						/>
-						<StyledAcceptButton type='submit' value='Accept' />
+						<StyledAcceptButton type='submit' value='Update' />
 					</StyledBoxButtons>
 				</StyledFormMessage>
 			</StyledMessageBox>
@@ -45,17 +50,17 @@ const AddMessage = ({ activeMessage, showAddMessage, getAllMessages }) => {
 	);
 };
 
-const createMessage = async event => {
+const updateMessage = async (event, id) => {
 	event.preventDefault();
 	const title = event.target.title.value;
 	const message = event.target.message.value;
 
 	//conectar a mongo para que envie la info
-	await fetch('http://localhost:3000/api/messages', {
-		method: 'POST',
+	await fetch(`http://localhost:3000/api/messages/${id}`, {
+		method: 'PATCH',
 		body: JSON.stringify({ title, message }),
 		headers: { 'Content-Type': 'application/json' }
 	});
 };
 
-export default AddMessage;
+export default FormMessage;
