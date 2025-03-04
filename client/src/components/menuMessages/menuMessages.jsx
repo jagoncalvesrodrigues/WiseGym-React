@@ -11,11 +11,11 @@ import {
 	StyledOptions,
 	StyledRRSS,
 	StyledUl
-} from './menu.styles';
+} from './menuMessages.styles';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Auth.context';
 
-const Menu = ({ loginAppears, registerAppears }) => {
+const MenuMessages = ({ loginAppears, registerAppears }) => {
 	const [toggle, setToggle] = useState(false);
 
 	const { user, loading } = useContext(AuthContext);
@@ -29,7 +29,7 @@ const Menu = ({ loginAppears, registerAppears }) => {
 			<StyledNavMobile>
 				<StyledLogo>
 					<Link to='/'>
-						<img src='assets/images/logos/Logo-wise-gym-w.png' alt='' />
+						<img src='/assets/images/logos/Logo-wise-gym.png' alt='' />
 					</Link>
 				</StyledLogo>
 				<StyledIcons>
@@ -37,7 +37,7 @@ const Menu = ({ loginAppears, registerAppears }) => {
 						$isVisible={toggle}
 						onClick={() => setToggle(!toggle)}
 					>
-						<img src='assets/images/icon/Hamburger.svg' alt='' />
+						<img src='assets/images/icon/Hamburger-B.svg' alt='' />
 					</StyledHamburger>
 					<StyledClose $isVisible={toggle} onClick={() => setToggle(!toggle)}>
 						<img src='assets/images/icon/Close.svg' alt='' />
@@ -88,4 +88,4 @@ const Menu = ({ loginAppears, registerAppears }) => {
 		</StyledNavBar>
 	);
 };
-export default Menu;
+export default MenuMessages;

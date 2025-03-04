@@ -55,8 +55,8 @@ const StyleImageProfile = styled.div`
     width: 115px;
     height: 115px;
     border-radius: 50%;
-    background-color: black;
-
+    background-image: url('/assets/images/profilePhotos/bjj.png');
+    background-size:cover;
 `;
 const StyledProfileForm = styled.div`
     color: white;

@@ -55,7 +55,7 @@ const Profile = () => {
 							</StyledBoxInputEdit>
 							<label htmlFor=''>Email</label>
 							<StyledBoxInputEdit>
-								<StyledInput type='text' />
+								<StyledInput type='text' defaultValue={userData?.email} />
 								<img src='/assets/images/icon/Edit.svg' alt='' />
 							</StyledBoxInputEdit>
 							{/* <label htmlFor=''>Password</label>

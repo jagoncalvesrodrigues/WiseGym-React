@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/Auth.context';
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	console.log(user);
+	// console.log(user);
 	useEffect(() => {
 		const unsubscribeAuth = auth.onAuthStateChanged(user => {
 			if (user) {
@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
 			} else {
 				setUser(null);
 			}
-			setLoading(false);
+			setTimeout(() => setLoading(false), 500);
 		});
 		return () => {
 			unsubscribeAuth();

@@ -66,4 +66,19 @@ messagesController.deleteMessage = async (req,res)=>{
     }
 }
 
+messagesController.getMessageByRangeDate = async (req,res)=>{
+    const {dateStart,dateEnd} = req.params;
+    try{
+        const messages = await MessageModel.find({
+            date: { $gte: new Date(dateStart), $lte: new Date(dateEnd) }
+        });
+        if(!messages){
+            return res.status(404).json({error:'Message not found'})
+        }
+        return res.status(200).json(messages);
+    }catch(error){
+        return res.status(500).json({error:'Error reading database'});
+    }
+}
+
 module.exports = messagesController;

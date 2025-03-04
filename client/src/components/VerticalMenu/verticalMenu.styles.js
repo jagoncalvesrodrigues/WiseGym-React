@@ -39,7 +39,8 @@ const StyledPhoto = styled.div`
    width: 48px;
    height: 48px;
    border-radius: 50%;
-   background-color: bisque;
+   background-image: url('/assets/images/profilePhotos/bjj.png');
+    background-size: cover;
 `;
 const StyledMenuVOption = styled.div`
     width: 100%;

@@ -4,28 +4,35 @@ import {
 	StyledBoxDate,
 	StyledBoxDates,
 	StyledBoxMessages,
+	StyledButtonDate,
 	StyledButtons,
+	StyledFormDates,
 	StyledIconDate,
 	StyledInputDate,
 	StyledMainMessages,
 	StyledModifyDate,
-	StyledNameButtons
+	StyledNameButtons,
+	StyledTitleDate
 } from './messages.styles';
 import AddMessage from '../../components/AddMessage/AddMessage';
 import { AuthContext } from '../../contexts/Auth.context';
 import { getUserById } from '../../utils/api';
+import MenuMessages from '../../components/menuMessages/menuMessages';
 const Messages = () => {
 	const { user } = useContext(AuthContext);
 	const [userData, setUserData] = useState(null);
 	const [toggleDate, setToggleDate] = useState(false);
 	const [toggleAddMessage, setToggleAddMessage] = useState(false);
 	const [messages, setMessages] = useState([]);
+	const [date1, setDate1] = useState('');
+	const [date2, setDate2] = useState('');
 
 	useEffect(() => {
 		getAllMessages(setMessages), getUserById(user, setUserData);
 	}, [user]);
 	return (
 		<>
+			<MenuMessages />
 			<AddMessage
 				getAllMessages={() => getAllMessages(setMessages)}
 				activeMessage={toggleAddMessage}
@@ -49,18 +56,35 @@ const Messages = () => {
 					)}
 				</StyledButtons>
 				<StyledModifyDate $isVisible={toggleDate}>
-					<p>Modify Date</p>
-					<StyledBoxDates>
-						<label htmlFor=''>Since</label>
-						<StyledInputDate type='date' id='date1' />
-					</StyledBoxDates>
-					<StyledBoxDates>
-						<label htmlFor=''>Until</label>
-						<StyledInputDate type='date' id='date2' />
-					</StyledBoxDates>
+					<StyledTitleDate>Modify Date</StyledTitleDate>
+					<StyledFormDates>
+						<StyledBoxDates>
+							<label htmlFor=''>Since</label>
+							<StyledInputDate
+								type='date'
+								id='date1'
+								value={date1}
+								onChange={e => setDate1(e.target.value)}
+							/>
+						</StyledBoxDates>
+						<StyledBoxDates>
+							<label htmlFor=''>Until</label>
+							<StyledInputDate
+								type='date'
+								id='date2'
+								value={date2}
+								onChange={e => setDate2(e.target.value)}
+							/>
+						</StyledBoxDates>
+						<StyledButtonDate onClick={() => handleFilterMessages}>
+							SEARCH
+						</StyledButtonDate>
+					</StyledFormDates>
 				</StyledModifyDate>
 				<StyledBoxMessages>
 					<Message
+						getAllMessages={getAllMessages}
+						setMessages={setMessages}
 						role={userData?.role}
 						message={messages}
 						refreshMessages={() => getAllMessages(setMessages)}
@@ -77,4 +101,22 @@ const getAllMessages = async setMessages => {
 	setMessages(mens);
 };
 
+const getMessageByRangeDate = async (date1, date2, setMessages) => {
+	const response = await fetch(
+		`http://localhost:3000/api/messages/${date1}/${date2}` // Modificado para pasar las fechas como parte de la ruta
+	);
+	const filteredMessages = await response.json();
+	setMessages(filteredMessages);
+};
+
+// Función que maneja el filtro de fechas
+const handleFilterMessages = async (date1, date2, setMessages) => {
+	if (date1 && date2) {
+		// Solo obtenemos los mensajes si las fechas son válidas
+		await getMessageByRangeDate(date1, date2, setMessages);
+	} else {
+		// Si no hay fechas seleccionadas, obtenemos todos los mensajes
+		getAllMessages(setMessages);
+	}
+};
 export default Messages;

@@ -10,14 +10,21 @@ import {
 } from './message.styles';
 import FormMessage from '../FormMessage/FormMessage';
 
-const Message = ({ message, role, refreshMessages }) => {
-	const [showMessage, setShowMessage] = useState(false);
+const Message = ({
+	message,
+	role,
+	refreshMessages,
+	setMessages,
+	getAllMessages
+}) => {
+	const [selectMessage, setSelectMessage] = useState({});
+	const [showMessageDelete, setShowMessageDelete] = useState(false);
 	const [showUpdateForm, setShowUpdateForm] = useState(false);
 	return (
 		<>
-			{showMessage && (
+			{showMessageDelete && (
 				<StyledBoxDeleted>
-					<p>Message was deleted</p>
+					<p>Message was Deleted</p>
 				</StyledBoxDeleted>
 			)}
 			{message.length === 0 && (
@@ -25,29 +32,34 @@ const Message = ({ message, role, refreshMessages }) => {
 					<h2>NO MESSAGES FROM THE GYM, KEEP TRAINING</h2>
 				</StyledNoMessages>
 			)}
+			<FormMessage
+				refreshMessages={() => getAllMessages(setMessages)}
+				completeMessage={selectMessage}
+				activeForm={showUpdateForm}
+				showUpdateForm={() => setShowUpdateForm(!showUpdateForm)}
+			/>
 			{message.map(men => (
 				<StyledBoxMessage key={men._id}>
-					<FormMessage
-						id={men._id}
-						title={men.title}
-						textMen={men.message}
-						activeForm={showUpdateForm}
-						showUpdateForm={() => setShowUpdateForm(!showUpdateForm)}
-					/>
 					{role === 'admin' && (
 						<StyledBoxAdmin>
 							<img
 								src='/assets/images/icon/Edit-B.svg'
 								alt=''
-								onClick={() => setShowUpdateForm(!showUpdateForm)}
+								onClick={() => {
+									setShowUpdateForm(!showUpdateForm);
+									setSelectMessage({
+										id: men._id,
+										title: men.title,
+										text: men.message
+									});
+								}}
 							/>
 							<img
 								src='/assets/images/icon/Trash.svg'
 								alt=''
 								onClick={() => {
 									deleteMessage(men._id);
-									handleClick(setShowMessage);
-									refreshMessages();
+									handleClickDelete(setShowMessageDelete, refreshMessages);
 								}}
 							/>
 						</StyledBoxAdmin>
@@ -69,9 +81,11 @@ const deleteMessage = async id => {
 	});
 };
 
-const handleClick = setShowMessage => {
-	setShowMessage(true);
-	setTimeout(() => setShowMessage(false), 2000); // Oculta el mensaje después de 2 segundos
+const handleClickDelete = async (setshowMessageDelete, refreshMessages) => {
+	setshowMessageDelete(true);
+	// Oculta el mensaje después de 2 segundos
+	setTimeout(() => setshowMessageDelete(false), 2000);
+	refreshMessages();
 };
 
 export default Message;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
+import { FONTS } from "../../constants/fonts";
 
 const StyledBoxMessages = styled.div`
     width:100%;
@@ -53,6 +54,7 @@ const StyledModifyDate = styled.form`
     padding: 20px 20px;
     flex-direction: column;
     gap: 20px;
+    width: 50%;
     `;
 const StyledInputDate = styled.input`
    border-style: none;
@@ -61,11 +63,32 @@ const StyledInputDate = styled.input`
 const StyledBoxDates = styled.div`
    display: flex;
    justify-content: space-between;
+   flex-direction: column;
+   margin-bottom: 10px;
 
+   @media screen and (width >=425px){
+        flex-direction: row;
+    }
    @media screen and (width >=1024px){
         width: 300px;
     }
 `;
+const StyledFormDates = styled.div`
+   display: flex;
+   flex-direction: column;
+ 
+`;
+const StyledTitleDate = styled.p`
+   font-weight: ${FONTS.extraBold};
+`;
+const StyledButtonDate = styled.button`
+    width: 100px;
+    align-self: flex-end;
+   background-color: ${COLORS.brown};
+   color: white;
+   border-style:none;
+   padding: 10px;
+`;
 
 
-export {StyledBoxDates,StyledInputDate,StyledModifyDate,StyledNameButtons,StyledButtons,StyledMainMessages,StyledIconDate,StyledBoxDate,StyledBoxMessages}
+export {StyledTitleDate,StyledButtonDate,StyledFormDates,StyledBoxDates,StyledInputDate,StyledModifyDate,StyledNameButtons,StyledButtons,StyledMainMessages,StyledIconDate,StyledBoxDate,StyledBoxMessages}

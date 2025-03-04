@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MENUVERTICAL } from '../../constants/MenuVerticalInfo';
 import {
 	StyledBoxMenuVertical,
@@ -14,9 +14,19 @@ import {
 	StyledLogo
 } from '../menu/menu.styles';
 import { Link } from 'react-router-dom';
+import { getUserById } from '../../utils/api';
+import { AuthContext } from '../../contexts/Auth.context';
 
 const VerticalMenu = () => {
 	const [toggle, setToggle] = useState(false);
+	const [userData, setUserData] = useState(null);
+	// const [suscription, setSuscription] = useState(false);
+	const { user } = useContext(AuthContext);
+	console.log(user);
+
+	useEffect(() => {
+		getUserById(user, setUserData);
+	}, [user]);
 	return (
 		<>
 			<StyledNavMobileProfile>
@@ -40,7 +50,7 @@ const VerticalMenu = () => {
 			<StyledBoxMenuVertical $toggle={toggle}>
 				<StyledBoxProfile>
 					<StyledPhoto></StyledPhoto>
-					<Link to='/profile'>Juan Goncalves</Link>
+					<Link to='/profile'>{userData?.name}</Link>
 				</StyledBoxProfile>
 				{MENUVERTICAL.map(option => (
 					<StyledMenuVOption key={option.name}>
