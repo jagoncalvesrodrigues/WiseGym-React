@@ -16,16 +16,24 @@ import {
 	StyledMonthYear,
 	StyledTitleMonth
 } from './booking.styles';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MARTIALARTS } from '../../constants/martialArts';
+import { getUserById } from '../../utils/api';
+import { AuthContext } from '../../contexts/Auth.context';
 
 const Booking = () => {
 	// const [selectedDate, setSelectedDate] = useState(null);
 	const [selectedMA, setSelectedMA] = useState(0);
 	const [showCalendarBox, setshowCalendarBox] = useState(false);
+	const [userData, setUserData] = useState(null);
+	const { user } = useContext(AuthContext);
+
+	useEffect(() => {
+		getUserById(user, setUserData);
+	}, [user]);
+
 	console.log(showCalendarBox);
 	return (
-		
 		<StyledMainBoxBooking>
 			<StyledBoxOptions $showCalendarBox={showCalendarBox}>
 				{MARTIALARTS.map((ma, index) => (
