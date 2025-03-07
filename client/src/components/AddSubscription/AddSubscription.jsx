@@ -14,11 +14,18 @@ import {
 	StyledSuscriptionBox,
 	StyledTitle
 } from './addSuscription.styles';
+import { useNavigate } from 'react-router-dom';
 
-const AddSubscription = ({ subscription, subscriptionAppears }) => {
-	console.log(subscription);
+const AddSubscription = ({
+	subscription,
+	subscriptionAppears,
+	userData,
+	setUserData
+}) => {
+	console.log(userData);
 	const maxSelected =
-		subscription.sub === 'Basic' ? 1 : subscription.sub === 'Premium' ? 2 : 4;
+		subscription?.sub === 'BASIC' ? 1 : subscription?.sub === 'PREMIUM' ? 2 : 4;
+	const navigate = useNavigate();
 
 	const [selectedSports, setSelectedSports] = useState({
 		Boxing: false,
@@ -43,7 +50,7 @@ const AddSubscription = ({ subscription, subscriptionAppears }) => {
 					<StyledLogo>
 						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
-					<StyledTitle>{subscription.sub} SUSCRIPTION</StyledTitle>
+					<StyledTitle>{subscription?.sub} SUSCRIPTION</StyledTitle>
 					<StyledSelectionSports>
 						<StyledCheckBox>
 							<StyledLabel htmlFor=''>Boxing</StyledLabel>
@@ -103,7 +110,14 @@ const AddSubscription = ({ subscription, subscriptionAppears }) => {
 								name='K1'
 								id='K1'
 								checked={selectedSports.K1}
-								onChange={handleCheckboxChange}
+								onChange={e =>
+									handleCheckboxChange(
+										e,
+										selectedSports,
+										setSelectedSports,
+										maxSelected
+									)
+								}
 							/>
 						</StyledCheckBox>
 					</StyledSelectionSports>
@@ -121,7 +135,20 @@ const AddSubscription = ({ subscription, subscriptionAppears }) => {
 							<StyledInput type='number' name='password' id='password' />
 						</StyledHalfBox>
 					</StyledBoxCardNumbers>
-					<StyledButton type='submit' value='CONFIRM' />
+					<StyledButton
+						onClick={async event => {
+							await updateSuscription(
+								event,
+								userData._id,
+								selectedSports,
+								setUserData,
+								navigate
+							);
+							subscriptionAppears();
+						}}
+					>
+						CONFIRM
+					</StyledButton>
 				</StyledFormSection>
 			</StyledSuscriptionBox>
 		</StyledSubscriptionContainer>
@@ -148,6 +175,34 @@ const handleCheckboxChange = (
 		...prevState,
 		[name]: checked
 	}));
+};
+
+const updateSuscription = async (
+	event,
+	id,
+	selectedSports,
+	setUserData,
+	navigate
+) => {
+	try {
+		event.preventDefault();
+		const sportsSelected = Object.keys(selectedSports).filter(
+			sport => selectedSports[sport]
+		);
+		const response = await fetch(`http://localhost:3000/api/users/${id}`, {
+			method: 'PATCH',
+			body: JSON.stringify({ suscription: sportsSelected }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+		if (!response.ok) {
+			throw new Error('Failed to update subscription');
+		}
+		const updatedUser = await response.json();
+		setUserData(updatedUser);
+		navigate('/book');
+	} catch (error) {
+		console.error('Error updating subscription:', error);
+	}
 };
 
 export default AddSubscription;

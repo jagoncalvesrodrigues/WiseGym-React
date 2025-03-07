@@ -23,7 +23,7 @@ const StyledSubscriptionContainer = styled.div`
     }
 `;
 
-const StyledSuscriptionBox = styled.form`
+const StyledSuscriptionBox = styled.div`
     background-color: white;
     width: 100vw;
     align-self: flex-end;
@@ -56,7 +56,7 @@ const StyledImageSection = styled.div`
     }
     `;
 
-const StyledFormSection = styled.form`
+const StyledFormSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -106,7 +106,7 @@ const StyledInput = styled.input`
     padding: 10px;
 `;
 
-const StyledButton = styled.input`
+const StyledButton = styled.button`
     color:${COLORS.white};
     font-size: 1rem;
     padding: 15px;

@@ -1,3 +1,4 @@
+import { CARD_INFO } from '../../constants/cardSub';
 import {
 	StyledBold,
 	StyledBoxInfoSub,
@@ -9,30 +10,47 @@ import {
 	StyledTitleSubscription
 } from './suscription.styles';
 
-const Subscription = () => {
+const Subscription = ({ userData, setShowPopUp }) => {
+	const selectedSubscription = getSubscriptionInfo(userData.suscription.length);
+	console.log(selectedSubscription);
 	return (
-		<StyledBoxSuscription>
-			<StyledImageSubscription></StyledImageSubscription>
-			<StyledBoxInfoSubscription>
-				<StyledTitleSubscription>YOUR SUBSCRIPTION</StyledTitleSubscription>
-				<StyledBoxInfoSub>
-					<StyledBold>PRO</StyledBold>
-					<StyledDescription>
-						<p>Subscription to all martial art</p>
-						<p>Unlimited classes</p>
-						<p>Unlimited use of Fitness Center</p>
-						<p>Space reservation</p>
-					</StyledDescription>
-				</StyledBoxInfoSub>
-				<StyledBoxInfoSub>
-					<StyledBold>400$</StyledBold>
-					<StyledButtonChange>
-						<p>CHANGE IT</p>
-					</StyledButtonChange>
-				</StyledBoxInfoSub>
-			</StyledBoxInfoSubscription>
-		</StyledBoxSuscription>
+		<>
+			<StyledBoxSuscription>
+				<StyledImageSubscription
+					$img={selectedSubscription.img}
+				></StyledImageSubscription>
+				<StyledBoxInfoSubscription>
+					<StyledTitleSubscription>YOUR SUBSCRIPTION</StyledTitleSubscription>
+					<StyledBoxInfoSub>
+						<StyledBold>{selectedSubscription.sub}</StyledBold>
+						<StyledDescription>
+							{selectedSubscription.info.map(info => (
+								<p key={info}>{info}</p>
+							))}
+						</StyledDescription>
+					</StyledBoxInfoSub>
+					<StyledBoxInfoSub>
+						<StyledBold>{selectedSubscription.price}</StyledBold>
+						<StyledButtonChange onClick={setShowPopUp}>
+							CHANGE IT
+						</StyledButtonChange>
+					</StyledBoxInfoSub>
+				</StyledBoxInfoSubscription>
+			</StyledBoxSuscription>
+		</>
 	);
 };
 
+const getSubscriptionInfo = length => {
+	switch (length) {
+		case 1:
+			return CARD_INFO.find(sub => sub.sub === 'BASIC');
+		case 2:
+			return CARD_INFO.find(sub => sub.sub === 'PREMIUM');
+		case 4:
+			return CARD_INFO.find(sub => sub.sub === 'PRO');
+		default:
+			return null; // Si no coincide con ninguno
+	}
+};
 export default Subscription;

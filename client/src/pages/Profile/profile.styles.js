@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 //PROFILE
 const StyledMainBoxProfile = styled.div`
@@ -92,4 +93,57 @@ const StyledSubscriptions = styled.div`
         gap: 10px;
     }
 `;
-export {StyledSignOut,StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
+const StyledBoxChangeSubscriptionPopUp = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: ${COLORS.brown50};
+    z-index: 120;
+    position: fixed;
+    display: flex;
+    align-items: end;
+    top: 0;
+    justify-content: center;
+    @media screen and (width >= 768px){
+        align-items: center;
+    }
+`;
+const StyledBoxConfirmation = styled.div`
+    width: 100vw;
+    height: 600px;
+    background-color: ${COLORS.egg};
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    text-align: center;
+    gap: 80px;
+    @media screen and (width >= 768px){
+        gap: 20px;
+        width: 600px;
+        height: 300px;
+    }
+    `;
+const StyledBoxButtonsConfirm = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+    @media screen and (width >= 768px){
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    `;
+const StyledImgLogoBoxConfirm = styled.img`
+    width: 230px;
+    `;
+const StyledButtonChangeSubscription = styled.button`
+    background-color: ${({$color})=>$color};
+    border-style: none;
+    height: 50px;
+    color: white;
+    @media screen and (width >= 768px){  
+        width: 200px;
+    }
+`;
+export {StyledButtonChangeSubscription,StyledBoxButtonsConfirm,StyledImgLogoBoxConfirm,StyledBoxConfirmation,StyledBoxChangeSubscriptionPopUp,StyledSignOut,StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}

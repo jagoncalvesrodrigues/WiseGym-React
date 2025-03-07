@@ -3,12 +3,17 @@ import { COLORS } from "../../constants/colors";
 import { FONTS } from "../../constants/fonts";
 
 const StyledBoxSuscription = styled.div`
-    display: none;
+    display: flex;
     width: 100%;
     height: 984px;
+    flex-direction: column;
     @media screen and (width>=1024px){
-        display: flex;
-        display: none;
+        flex-direction: row;
+        height: 500px;
+    }
+    @media screen and (width>=1440px){
+        flex-direction: row;
+        height: 800px;
     }
 `;
 const StyledImageSubscription = styled.div`
@@ -23,12 +28,13 @@ const StyledImageSubscription = styled.div`
     @media screen and (width>=1024px){
         background-position: 0px 0px;
         width: 42%;
+        height: 100%;
     } 
-    @media screen and (width>=1440px){
-        background-position: 0px -200px;
-        
-    }
-   
+    @media screen and (width>=1024px){
+        background-position: 0px 0px;
+        width: 42%;
+        height: 100%;
+    } 
 `;
 const StyledBoxInfoSubscription = styled.div`
     background-color: ${COLORS.black};
@@ -39,6 +45,7 @@ const StyledBoxInfoSubscription = styled.div`
     justify-content: space-between;
     @media screen and (width>=1024px){
         width: 58%;
+        height: 100%;
     }
     @media screen and (width>=1440px){
         align-items: start;
@@ -78,15 +85,20 @@ const StyledBold = styled.p`
     font-weight: ${FONTS.bold};
     font-size: 24px;
 `;
-const StyledButtonChange = styled.div`
+const StyledButtonChange = styled.button`
     background-color: rgba(240,187,120,0.6);
     padding-left: 46px;
     padding-right: 46px;
+    color:white;
+    border-style: none;
+    height: 43px;
     @media screen and (width>=1440px){
         position: absolute;
-        right: 50px;
-        
+        right: 50px;   
     }
 `;
+
+
+
 
 export {StyledDescription,StyledButtonChange,StyledBold,StyledBoxInfoSub,StyledTitleSubscription,StyledBoxSuscription,StyledBoxInfoSubscription,StyledImageSubscription}
