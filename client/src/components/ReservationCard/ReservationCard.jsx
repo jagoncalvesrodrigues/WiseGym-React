@@ -1,19 +1,25 @@
+import { MARTIALARTS } from '../../constants/martialArts';
 import {
 	StyledBoxReservationCard,
 	StyledDate,
 	StyledTitleCard
 } from './reservationCard.styles';
 
-const ReservationCard = () => {
+const ReservationCard = ({ ma, hour, date }) => {
 	return (
-		<StyledBoxReservationCard>
-			<StyledTitleCard>BOXING</StyledTitleCard>
+		<StyledBoxReservationCard $photo={findBg(ma)}>
+			<StyledTitleCard>{ma}</StyledTitleCard>
 			<StyledDate>
-				<p>04/04/2025</p>
-				<p>16:00</p>
+				<p>{hour}</p>
+				<p>{date}</p>
 			</StyledDate>
 		</StyledBoxReservationCard>
 	);
+};
+
+const findBg = ma => {
+	const art = MARTIALARTS.find(art => art.text === ma);
+	return art.img;
 };
 
 export default ReservationCard;

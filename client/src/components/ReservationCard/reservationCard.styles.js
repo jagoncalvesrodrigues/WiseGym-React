@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledBoxReservationCard =  styled.div`
-    background-image: url('/assets/images/imgs/box-booking.jpg');
+    background-image: ${({ $photo }) => `url(${ $photo })`};
     background-position: center;
     background-size: cover;
     height: 197px;

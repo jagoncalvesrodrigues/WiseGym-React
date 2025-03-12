@@ -14,7 +14,10 @@ const Header = () => {
 		<StyledBoxHeader>
 			{!user && !loading && (
 				<>
-					<StyledJoinNow onClick={() => setLogin(!login)} $bg={COLORS.white}>
+					<StyledJoinNow
+						onClick={() => setRegister(!register)}
+						$bg={COLORS.white}
+					>
 						<p>JOIN NOW</p>
 					</StyledJoinNow>
 				</>

@@ -41,8 +41,8 @@ usersController.updateUser = async (req,res)=>{
             return res.status(404).json({error:'User not found'})
         }
         await UserModel.updateOne({_id:id},{$set:{...newUser}});
-        const allMessages = await UserModel.find()
-        return res.status(200).json(allMessages);
+        const allUsers = await UserModel.find()
+        return res.status(200).json(allUsers);
     }catch(error){
         return res.status(500).json({error:'Error reading/write database'+error});
     }
@@ -56,8 +56,8 @@ usersController.addReservation = async (req,res)=>{
             return res.status(404).json({error:'User not found'})
         }
         await UserModel.updateOne({_id:id},{$push:{reserves:newReservation}});
-        const allMessages = await UserModel.find()
-        return res.status(200).json(allMessages);
+        const allUsers = await UserModel.find()
+        return res.status(200).json(allUsers);
     }catch(error){
         return res.status(500).json({error:'Error reading/write database'+error});
     }

@@ -127,5 +127,41 @@ const StyledConfirmReservePopUp = styled.div`
         align-items: center;
     }
 `;
+const StyledBoxConfirmationSchedule = styled.div`
+    width: 100vw;
+    height: 600px;
+    background-color: ${COLORS.egg};
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    font-size: 1.1rem;
+    gap: 10px;
+    @media screen and (width >= 768px){
+        gap: 20px;
+        width: 600px;
+        height: 400px;
+    }
+`;
+const StyledBoxButtonsBookingConfirm = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    gap: 20px;
+    margin: auto;
+`;
+const StyledBackScheduleButton = styled.button`
+    border-style: none;
+    background-color: ${({$bg})=>$bg};
+    color:${({$lettersC})=>$lettersC};
+    padding: 11px;
+    width: 150px;
+`;
+const StyledInputInfo = styled.input`
+    border-style: none;
+    padding: 7px;
+`;
 
-export {StyledConfirmReservePopUp,StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
+
+
+
+export {StyledInputInfo,StyledBackScheduleButton,StyledBoxButtonsBookingConfirm,StyledBoxConfirmationSchedule,StyledConfirmReservePopUp,StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}

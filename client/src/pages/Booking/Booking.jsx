@@ -1,7 +1,10 @@
 import { eachDayOfInterval, endOfMonth, format, startOfMonth } from 'date-fns';
 import BookingOptions from '../../components/BookingOptions/BookingOptions';
 import {
+	StyledBackScheduleButton,
+	StyledBoxButtonsBookingConfirm,
 	StyledBoxCalendar,
+	StyledBoxConfirmationSchedule,
 	StyledBoxDay,
 	StyledBoxDays,
 	StyledBoxDesktopCalendar,
@@ -13,6 +16,7 @@ import {
 	StyledCloseReserve,
 	StyledConfirmReservePopUp,
 	StyledHour,
+	StyledInputInfo,
 	StyledMainBoxBooking,
 	StyledMonthYear,
 	StyledTitleMonth
@@ -21,7 +25,7 @@ import { useContext, useEffect, useState } from 'react';
 import { MARTIALARTS } from '../../constants/martialArts';
 import { getUserById } from '../../utils/api';
 import { AuthContext } from '../../contexts/Auth.context';
-import { StyledBoxConfirmation } from '../Profile/profile.styles';
+import { COLORS } from '../../constants/colors';
 
 const Booking = () => {
 	const [selectedDate, setSelectedDate] = useState(null);
@@ -48,7 +52,42 @@ const Booking = () => {
 		<>
 			{confirmReserve && (
 				<StyledConfirmReservePopUp>
-					<StyledBoxConfirmation></StyledBoxConfirmation>
+					<StyledBoxConfirmationSchedule>
+						<p>Confirm your details</p>
+						<label htmlFor=''>Name</label>
+						<StyledInputInfo readOnly type='text' value={userData.name} />
+						<label htmlFor=''>Class</label>
+						<StyledInputInfo
+							type='text'
+							value={`${selectedDate ? selectedDate : ''} ${selectedHour ? selectedHour : ''}`}
+							readOnly
+						/>
+						<StyledBoxButtonsBookingConfirm>
+							<StyledBackScheduleButton
+								$bg={COLORS.white}
+								$lettersC={COLORS.black}
+								onClick={() => setConfirmReserve(!confirmReserve)}
+							>
+								BACK
+							</StyledBackScheduleButton>
+							<StyledBackScheduleButton
+								$bg={COLORS.brown}
+								$lettersC={COLORS.white}
+								onClick={event => {
+									setConfirmReserve(!confirmReserve),
+										addReservation(
+											event,
+											userData._id,
+											selectedDate,
+											selectedMA,
+											selectedHour
+										);
+								}}
+							>
+								SCHEDULE
+							</StyledBackScheduleButton>
+						</StyledBoxButtonsBookingConfirm>
+					</StyledBoxConfirmationSchedule>
 				</StyledConfirmReservePopUp>
 			)}
 			<StyledMainBoxBooking>
