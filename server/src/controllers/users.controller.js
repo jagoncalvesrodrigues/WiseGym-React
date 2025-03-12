@@ -47,6 +47,21 @@ usersController.updateUser = async (req,res)=>{
         return res.status(500).json({error:'Error reading/write database'+error});
     }
 }
+usersController.addReservation = async (req,res)=>{
+    const {id}=req.params;
+    const newReservation = req.body;
+    try{
+        const userToUpdate = await UserModel.findById(id);
+        if(!userToUpdate){
+            return res.status(404).json({error:'User not found'})
+        }
+        await UserModel.updateOne({_id:id},{$push:{reserves:newReservation}});
+        const allMessages = await UserModel.find()
+        return res.status(200).json(allMessages);
+    }catch(error){
+        return res.status(500).json({error:'Error reading/write database'+error});
+    }
+}
 
 usersController.getAllUsers = async (req,res)=>{
     try{

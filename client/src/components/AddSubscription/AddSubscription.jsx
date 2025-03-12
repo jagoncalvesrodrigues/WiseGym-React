@@ -31,7 +31,7 @@ const AddSubscription = ({
 		Boxing: false,
 		BJJ: false,
 		MuayThai: false,
-		K1: false
+		KickBoxing: false
 	});
 	return (
 		<StyledSubscriptionContainer
@@ -107,9 +107,9 @@ const AddSubscription = ({
 							<StyledLabel htmlFor=''>K1</StyledLabel>
 							<input
 								type='checkbox'
-								name='K1'
-								id='K1'
-								checked={selectedSports.K1}
+								name='KickBoxing'
+								id='KickBoxing'
+								checked={selectedSports.KickBoxing}
 								onChange={e =>
 									handleCheckboxChange(
 										e,
@@ -199,7 +199,7 @@ const updateSuscription = async (
 		}
 		const updatedUser = await response.json();
 		setUserData(updatedUser);
-		navigate('/book');
+		navigate('/booking');
 	} catch (error) {
 		console.error('Error updating subscription:', error);
 	}

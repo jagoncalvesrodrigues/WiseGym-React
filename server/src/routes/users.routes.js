@@ -6,5 +6,6 @@ usersRoutes.get('/',usersController.getAllUsers);
 usersRoutes.get('/:id',usersController.getUserById);
 usersRoutes.post('/',usersController.createNewUser);
 usersRoutes.patch('/:id',usersController.updateUser);
+usersRoutes.patch('/:id',usersController.addReservation);
 
 module.exports = usersRoutes;

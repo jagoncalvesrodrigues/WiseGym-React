@@ -11,12 +11,12 @@ export const MARTIALARTS = [
     },
     {
         img:'/assets/images/imgs/muay-thai-book.jpg',
-        text:'MUAY THAI',
+        text:'MUAYTHAI',
         hours:['9:00','20:00','21:00','22:00'],
     },  
     {
         img:'/assets/images/imgs/kick-boxing-book.jpg',
-        text:'KICK BOXING',
+        text:'KICKBOXING',
         hours:['11:00','14:00','21:00','22:00'],
     }
 ]

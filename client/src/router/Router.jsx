@@ -7,8 +7,8 @@ import Profile from '../pages/Profile/Profile';
 import Messages from '../pages/Messages/Messages';
 import Layout from '../Layout/Layout';
 import LayoutLogged from '../Layout/LayoutLogged';
-import Reservations from '../pages/Reservations/Reservations';
 import Spaces from '../pages/Spaces/Spaces';
+import Reservation from '../pages/Reservation/Reservation';
 
 const Router = () => {
 	return (
@@ -22,7 +22,7 @@ const Router = () => {
 				<Route element={<LayoutLogged />}>
 					<Route path='/booking' element={<Booking />} />
 					<Route path='/profile' element={<Profile />} />
-					<Route path='/reservations' element={<Reservations />} />
+					<Route path='/reservations' element={<Reservation />} />
 					<Route path='/space' element={<Spaces />} />
 				</Route>
 			</Route>

@@ -11,6 +11,7 @@ import {
 	StyledBoxReserve,
 	StyledButtonReserve,
 	StyledCloseReserve,
+	StyledConfirmReservePopUp,
 	StyledHour,
 	StyledMainBoxBooking,
 	StyledMonthYear,
@@ -20,65 +21,99 @@ import { useContext, useEffect, useState } from 'react';
 import { MARTIALARTS } from '../../constants/martialArts';
 import { getUserById } from '../../utils/api';
 import { AuthContext } from '../../contexts/Auth.context';
+import { StyledBoxConfirmation } from '../Profile/profile.styles';
 
 const Booking = () => {
-	// const [selectedDate, setSelectedDate] = useState(null);
+	const [selectedDate, setSelectedDate] = useState(null);
 	const [selectedMA, setSelectedMA] = useState(0);
 	const [showCalendarBox, setshowCalendarBox] = useState(false);
 	const [userData, setUserData] = useState(null);
+	const [selectedHour, setSelectedHour] = useState(null);
+	const [confirmReserve, setConfirmReserve] = useState(false);
 	const { user } = useContext(AuthContext);
+
+	// Filtrar las artes marciales que coincidan con la suscripción del usuario
+	const filteredOptions = MARTIALARTS.filter(art =>
+		userData?.suscription?.some(
+			sub => sub.toLowerCase() === art.text.toLowerCase()
+		)
+	);
+
+	console.log(selectedDate);
 
 	useEffect(() => {
 		getUserById(user, setUserData);
 	}, [user]);
-
-	console.log(showCalendarBox);
 	return (
-		<StyledMainBoxBooking>
-			<StyledBoxOptions $showCalendarBox={showCalendarBox}>
-				{MARTIALARTS.map((ma, index) => (
-					<BookingOptions
-						key={index}
-						name={ma.text}
-						img={ma.img}
-						onClick={() => {
-							setSelectedMA(index);
-							showCalendar(setshowCalendarBox);
-						}}
-					/>
-				))}
-			</StyledBoxOptions>
-			<StyledBoxReserve $showCalendarBox={showCalendarBox}>
-				<StyledBoxDesktopCalendar>
-					<StyledMonthYear>
-						<StyledTitleMonth>{monthName}</StyledTitleMonth>
-						<p>{year}</p>
-					</StyledMonthYear>
-					<StyledBoxDays></StyledBoxDays>
-					<StyledBoxCalendar>
-						{filteredDays.map((day, index) => (
-							<StyledBoxDay key={index}>{format(day, 'd')}</StyledBoxDay>
-						))}
-					</StyledBoxCalendar>
-				</StyledBoxDesktopCalendar>
-				<StyledBoxDesktopHours>
-					<StyledCloseReserve
-						onClick={() => showCalendar(setshowCalendarBox)}
-						src='/assets/images/icon/Close-B.svg'
-						alt=''
-					/>
-					<StyledMonthYear>
-						<p>{dayName}</p>
-					</StyledMonthYear>
-					<StyledBoxHours>
-						{MARTIALARTS[selectedMA].hours.map(ma => (
-							<StyledHour key={ma}>{ma}</StyledHour>
-						))}
-					</StyledBoxHours>
-					<StyledButtonReserve>RESERVE</StyledButtonReserve>
-				</StyledBoxDesktopHours>
-			</StyledBoxReserve>
-		</StyledMainBoxBooking>
+		<>
+			{confirmReserve && (
+				<StyledConfirmReservePopUp>
+					<StyledBoxConfirmation></StyledBoxConfirmation>
+				</StyledConfirmReservePopUp>
+			)}
+			<StyledMainBoxBooking>
+				<StyledBoxOptions $showCalendarBox={showCalendarBox}>
+					{filteredOptions.map((ma, index) => (
+						<BookingOptions
+							key={index}
+							name={ma.text}
+							img={ma.img}
+							onClick={() => {
+								setSelectedMA(index);
+								setshowCalendarBox(!showCalendarBox);
+							}}
+						/>
+					))}
+				</StyledBoxOptions>
+				<StyledBoxReserve $showCalendarBox={showCalendarBox}>
+					<StyledBoxDesktopCalendar>
+						<StyledMonthYear>
+							<StyledTitleMonth>{monthName}</StyledTitleMonth>
+							<p>{year}</p>
+						</StyledMonthYear>
+						<StyledBoxDays></StyledBoxDays>
+						<StyledBoxCalendar>
+							{filteredDays.map((day, index) => (
+								<StyledBoxDay
+									key={index}
+									onClick={() => setSelectedDate(format(day, 'yyyy-MM-dd'))}
+								>
+									{format(day, 'd')}
+								</StyledBoxDay>
+							))}
+						</StyledBoxCalendar>
+					</StyledBoxDesktopCalendar>
+					<StyledBoxDesktopHours>
+						{selectedDate && (
+							<>
+								<StyledCloseReserve
+									onClick={() => {
+										setshowCalendarBox(!showCalendarBox), setSelectedDate(null);
+									}}
+									src='/assets/images/icon/Close-B.svg'
+									alt=''
+								/>
+								<StyledMonthYear>
+									<p>{dayName}</p>
+								</StyledMonthYear>
+								<StyledBoxHours>
+									{MARTIALARTS[selectedMA].hours.map(ma => (
+										<StyledHour key={ma} onClick={() => setSelectedHour(ma)}>
+											{ma}
+										</StyledHour>
+									))}
+								</StyledBoxHours>
+							</>
+						)}
+						<StyledButtonReserve
+							onClick={() => setConfirmReserve(!confirmReserve)}
+						>
+							RESERVE
+						</StyledButtonReserve>
+					</StyledBoxDesktopHours>
+				</StyledBoxReserve>
+			</StyledMainBoxBooking>
+		</>
 	);
 };
 
@@ -99,8 +134,26 @@ const filteredDays = daysInMonth.filter(day => {
 	return dayOfWeek !== 0 && dayOfWeek !== 6;
 });
 
-const showCalendar = setshowCalendarBox => {
-	setshowCalendarBox(element => !element);
+const addReservation = async (
+	event,
+	id,
+	selectedDate,
+	selectedMA,
+	selectedHour
+) => {
+	event.preventDefault();
+	const reservationData = {
+		date: selectedDate,
+		martialArt: MARTIALARTS[selectedMA].text,
+		hour: selectedHour
+	};
+
+	//conectar a mongo para que envie la info
+	await fetch(`http://localhost:3000/api/users/addReservation/${id}`, {
+		method: 'PATCH',
+		body: JSON.stringify(reservationData),
+		headers: { 'Content-Type': 'application/json' }
+	});
 };
 
 export default Booking;

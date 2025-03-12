@@ -113,4 +113,19 @@ const StyledCloseReserve =  styled.img`
     }
 `;
 
-export {StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
+const StyledConfirmReservePopUp = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: ${COLORS.brown50};
+    z-index: 120;
+    position: fixed;
+    display: flex;
+    align-items: end;
+    top: 0;
+    justify-content: center;
+    @media screen and (width >= 768px){
+        align-items: center;
+    }
+`;
+
+export {StyledConfirmReservePopUp,StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
