@@ -79,7 +79,7 @@ const registerUser = async (event, navigate) => {
 		const id = firebaseResponse.user.uid;
 
 		// conectar a mongo para que envie la info
-		await fetch('http://localhost:3000/api/users', {
+		await fetch('https://wise-gym-react-lah7.vercel.app/api/users', {
 			method: 'POST',
 			body: JSON.stringify({ _id: id, email }),
 			headers: { 'Content-Type': 'application/json' }

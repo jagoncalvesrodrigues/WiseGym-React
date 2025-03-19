@@ -189,11 +189,14 @@ const updateSuscription = async (
 		const sportsSelected = Object.keys(selectedSports).filter(
 			sport => selectedSports[sport]
 		);
-		const response = await fetch(`http://localhost:3000/api/users/${id}`, {
-			method: 'PATCH',
-			body: JSON.stringify({ suscription: sportsSelected }),
-			headers: { 'Content-Type': 'application/json' }
-		});
+		const response = await fetch(
+			`https://wise-gym-react-lah7.vercel.app/api/users/${id}`,
+			{
+				method: 'PATCH',
+				body: JSON.stringify({ suscription: sportsSelected }),
+				headers: { 'Content-Type': 'application/json' }
+			}
+		);
 		if (!response.ok) {
 			throw new Error('Failed to update subscription');
 		}
