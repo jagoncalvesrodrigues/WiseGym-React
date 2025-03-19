@@ -77,7 +77,7 @@ const Message = ({
 
 const deleteMessage = async id => {
 	// await fetch(`http://localhost:3000/api/messages/${id}`, {
-	await fetch(`https://wise-gym-react-lah7.vercel.app/api/messages/${id}`, {
+	await fetch(`https://server-umber-three-60.vercel.app/api/messages/${id}`, {
 		method: 'DELETE'
 	});
 };

@@ -77,7 +77,7 @@ const updateMessage = async (event, id) => {
 	const message = event.target.message.value;
 
 	//conectar a mongo para que envie la info
-	await fetch(`https://wise-gym-react-lah7.vercel.app/api/messages/${id}`, {
+	await fetch(`https://server-umber-three-60.vercel.app/api/messages/${id}`, {
 		method: 'PATCH',
 		body: JSON.stringify({ title, message }),
 		headers: { 'Content-Type': 'application/json' }

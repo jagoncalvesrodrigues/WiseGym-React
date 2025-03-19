@@ -44,7 +44,7 @@ const StyledLoginBox = styled.div`
 
 const StyledImageSection = styled.div`
     display: none;
-    background-image: url('public/assets/images/imgs/pexels-edwardeyer-10610182.jpg');
+    background-image: url('/assets/images/imgs/pexels-edwardeyer-10610182.jpg');
     width: 100%;
     background-position: center;
     background-size: cover;

@@ -46,7 +46,7 @@ const Register = ({ register, registerAppears }) => {
 				<StyledImageSection />
 				<StyledFormSection onSubmit={event => registerUser(event, navigate)}>
 					<StyledLogo>
-						<img src='public/assets/images/logos/Logo_sencillo.svg' alt='' />
+						<img src='/assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
 					<StyledTitle>Get Started Now!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>
@@ -79,7 +79,7 @@ const registerUser = async (event, navigate) => {
 		const id = firebaseResponse.user.uid;
 
 		// conectar a mongo para que envie la info
-		await fetch('https://wise-gym-react-lah7.vercel.app/api/users', {
+		await fetch('https://server-umber-three-60.vercel.app/api/users', {
 			method: 'POST',
 			body: JSON.stringify({ _id: id, email }),
 			headers: { 'Content-Type': 'application/json' }
