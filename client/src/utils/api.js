@@ -1,6 +1,7 @@
 
 
-const URL = 'http://localhost:3000'
+// const URL = 'http://localhost:3000'
+const URL = 'https://wise-gym-react-lah7.vercel.app'
 const API_URL = '/api/users'
 
 const getUserById = async (user, setUserData) => {
