@@ -189,7 +189,7 @@ const addReservation = async (
 
 	//conectar a mongo para que envie la info
 	await fetch(
-		`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/api/users/addReservation/${id}`,
+		`https://server-umber-three-60.vercel.app/api/users/addReservation/${id}`,
 		{
 			method: 'PATCH',
 			body: JSON.stringify(reservationData),

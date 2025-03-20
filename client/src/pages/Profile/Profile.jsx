@@ -154,7 +154,7 @@ const updateSuscription = async (event, id, setUserData, navigate) => {
 
 	//conectar a mongo para que envie la info
 	const response = await fetch(
-		`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/users/${id}`,
+		`https://server-umber-three-60.vercel.app/users/${id}`,
 		{
 			method: 'PATCH',
 			body: JSON.stringify({ suscription: [] }),

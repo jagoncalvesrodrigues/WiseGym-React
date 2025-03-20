@@ -190,7 +190,7 @@ const updateSuscription = async (
 			sport => selectedSports[sport]
 		);
 		const response = await fetch(
-			`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/api/users/${id}`,
+			`https://server-umber-three-60.vercel.app/api/users/${id}`,
 			{
 				method: 'PATCH',
 				body: JSON.stringify({ suscription: sportsSelected }),
