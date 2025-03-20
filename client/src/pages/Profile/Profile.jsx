@@ -153,11 +153,14 @@ const updateSuscription = async (event, id, setUserData, navigate) => {
 	event.preventDefault();
 
 	//conectar a mongo para que envie la info
-	const response = await fetch(`http://localhost:3000/api/users/${id}`, {
-		method: 'PATCH',
-		body: JSON.stringify({ suscription: [] }),
-		headers: { 'Content-Type': 'application/json' }
-	});
+	const response = await fetch(
+		`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/users/${id}`,
+		{
+			method: 'PATCH',
+			body: JSON.stringify({ suscription: [] }),
+			headers: { 'Content-Type': 'application/json' }
+		}
+	);
 	const updatedUser = await response.json();
 	setUserData(updatedUser);
 	navigate('/');

@@ -96,7 +96,9 @@ const Messages = () => {
 };
 
 const getAllMessages = async setMessages => {
-	const response = await fetch('http://localhost:3000/api/messages');
+	const response = await fetch(
+		'https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/api/messages'
+	);
 	const mens = await response.json();
 	setMessages(mens);
 };

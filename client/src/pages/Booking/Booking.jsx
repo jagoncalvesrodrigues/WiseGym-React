@@ -188,11 +188,14 @@ const addReservation = async (
 	};
 
 	//conectar a mongo para que envie la info
-	await fetch(`http://localhost:3000/api/users/addReservation/${id}`, {
-		method: 'PATCH',
-		body: JSON.stringify(reservationData),
-		headers: { 'Content-Type': 'application/json' }
-	});
+	await fetch(
+		`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/api/users/addReservation/${id}`,
+		{
+			method: 'PATCH',
+			body: JSON.stringify(reservationData),
+			headers: { 'Content-Type': 'application/json' }
+		}
+	);
 };
 
 export default Booking;
