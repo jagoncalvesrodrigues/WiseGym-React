@@ -23,7 +23,11 @@ app.use(express.json());
 app.use('/api/messages',messagesRoutes);
 app.use('/api/users',usersRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando en Vercel 🚀");
+});
 
+app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));
 //conexion a la db
 const startServer = async()=>{
   try{
