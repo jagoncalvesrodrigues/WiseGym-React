@@ -43,7 +43,7 @@ const StyledLoginBox = styled.div`
 
 const StyledImageSection = styled.div`
     display: none;
-    background-image: url('public/assets/images/imgs/register-photo.png');
+    background-image: url('/assets/images/imgs/register-photo.png');
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -111,4 +111,9 @@ const StyledButton = styled.input`
     background-color: ${COLORS.black};
 `;
 
-export {StyledLabelSignUp,StyledLabelForgot,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}
+const StyledErrorText = styled.p`
+    color: ${({$color})=>$color};
+    margin: 0;
+`;
+
+export {StyledErrorText,StyledLabelSignUp,StyledLabelForgot,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}

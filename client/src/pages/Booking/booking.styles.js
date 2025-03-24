@@ -164,8 +164,11 @@ const StyledInputInfo = styled.input`
     border-style: none;
     padding: 7px;
 `;
+const StyledErrorText = styled.p`
+    color: ${({$color})=>$color};
+    margin: 0;
+`;
 
 
 
-
-export {StyledInputInfo,StyledBackScheduleButton,StyledBoxButtonsBookingConfirm,StyledBoxConfirmationSchedule,StyledConfirmReservePopUp,StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}
+export {StyledErrorText,StyledInputInfo,StyledBackScheduleButton,StyledBoxButtonsBookingConfirm,StyledBoxConfirmationSchedule,StyledConfirmReservePopUp,StyledCloseReserve,StyledButtonReserve,StyledBoxDesktopHours,StyledBoxDesktopCalendar,StyledBoxOptions,StyledHour,StyledBoxHours,StyledTitleMonth,StyledBoxDays,StyledMonthYear,StyledBoxReserve,StyledBoxDay,StyledBoxCalendar,StyledMainBoxBooking}

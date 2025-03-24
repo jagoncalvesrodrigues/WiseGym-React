@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import {
 	StyledButton,
+	StyledErrorText,
 	StyledFormSection,
 	StyledImageSection,
 	StyledInput,
@@ -17,9 +18,17 @@ import {
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth.context';
+import { useForm } from 'react-hook-form';
+import { FORM_VALIDATIONS } from '../../constants/form-validation';
+import { COLORS } from '../../constants/colors';
 
 const Register = ({ register, registerAppears }) => {
-	// const [userreg, setUserreg] = useState({});
+	const {
+		register: formRegister,
+		handleSubmit,
+		reset,
+		formState: { errors }
+	} = useForm();
 
 	const { user, loading } = useContext(AuthContext);
 	const navigate = useNavigate();
@@ -44,14 +53,25 @@ const Register = ({ register, registerAppears }) => {
 		>
 			<StyledLoginBox>
 				<StyledImageSection />
-				<StyledFormSection onSubmit={event => registerUser(event, navigate)}>
+				<StyledFormSection
+					autoComplete='off'
+					onSubmit={handleSubmit(data => registerUser(data, navigate, reset))}
+					noValidate
+				>
 					<StyledLogo>
 						<img src='/assets/images/logos/Logo_sencillo.svg' alt='' />
 					</StyledLogo>
 					<StyledTitle>Get Started Now!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>
 					<StyledLabel htmlFor=''>Email</StyledLabel>
-					<StyledInput type='email' name='email' id='email' />
+					<StyledInput
+						type='email'
+						{...formRegister('email', FORM_VALIDATIONS.EMAIL)}
+						id='email'
+					/>
+					<StyledErrorText $color={COLORS.red}>
+						{errors.email?.message}
+					</StyledErrorText>
 					<StyledLabel htmlFor=''>Password</StyledLabel>
 					<StyledInput type='password' name='pass' id='pass' />
 					<StyledButton type='submit' value='Sign Up' />

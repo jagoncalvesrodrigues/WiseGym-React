@@ -15,11 +15,9 @@ import {
 } from './login.styles';
 import { auth } from '../../config/firebase.config';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 
 const Login = ({ login, loginAppears }) => {
 	const navigate = useNavigate();
-	const { register, handleSubmit } = useForm();
 
 	return (
 		<StyledLoginContainer
@@ -35,9 +33,10 @@ const Login = ({ login, loginAppears }) => {
 			<StyledLoginBox>
 				<StyledImageSection />
 				<StyledFormSection
-					onSubmit={handleSubmit(data => {
-						loginUser(data, navigate), console.log(data);
-					})}
+					autoComplete='off'
+					onSubmit={event => {
+						loginUser(event, navigate);
+					}}
 				>
 					<StyledLogo>
 						<img src='assets/images/logos/Logo_sencillo.svg' alt='' />
@@ -45,17 +44,9 @@ const Login = ({ login, loginAppears }) => {
 					<StyledTitle>Welcome Back!</StyledTitle>
 					<StyledSubtitle>Please enter your details</StyledSubtitle>
 					<StyledLabel htmlFor=''>Email</StyledLabel>
-					<StyledInput
-						type='email'
-						{...register('email', { required: true })}
-						id='email'
-					/>
+					<StyledInput type='email' name='email' id='email' />
 					<StyledLabel htmlFor=''>Password</StyledLabel>
-					<StyledInput
-						type='password'
-						{...register('password')}
-						id='password'
-					/>
+					<StyledInput type='password' name='password' id='password' />
 					<StyledLabelForgot htmlFor=''>Forgot Password</StyledLabelForgot>
 					<StyledButton type='submit' value='Login' />
 					<StyledLabelSignUp htmlFor=''>
