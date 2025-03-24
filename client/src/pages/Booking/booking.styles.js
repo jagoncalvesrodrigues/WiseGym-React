@@ -49,7 +49,9 @@ const StyledBoxOptions =  styled.div`
 const StyledBoxDay =  styled.div`
     width: 60px;
     height: 60px;
-    background-color: ${COLORS.egg};
+    background-color: ${({ isSelected }) => (isSelected ? COLORS.brown : COLORS.egg)};
+    color: ${({ isSelected }) => (isSelected ? 'white' : 'black')};
+    transition: background-color 0.3s, color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,7 +75,9 @@ const StyledBoxHours =  styled.div`
     margin-bottom: 10px;
 `;
 const StyledHour =  styled.div`
-    background-color: ${COLORS.egg};
+    background-color: ${({ isSelected }) => (isSelected ? COLORS.brown : COLORS.egg)};
+    color: ${({ isSelected }) => (isSelected ? 'white' : 'black')};
+    transition: background-color 0.3s, color 0.3s;
     height: 44px;
     display: flex;
     justify-content: center;

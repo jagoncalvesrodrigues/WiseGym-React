@@ -115,6 +115,7 @@ const Booking = () => {
 							{filteredDays.map((day, index) => (
 								<StyledBoxDay
 									key={index}
+									isSelected={selectedDate === format(day, 'yyyy-MM-dd')}
 									onClick={() => setSelectedDate(format(day, 'yyyy-MM-dd'))}
 								>
 									{format(day, 'd')}
@@ -137,7 +138,11 @@ const Booking = () => {
 								</StyledMonthYear>
 								<StyledBoxHours>
 									{MARTIALARTS[selectedMA].hours.map(ma => (
-										<StyledHour key={ma} onClick={() => setSelectedHour(ma)}>
+										<StyledHour
+											key={ma}
+											isSelected={selectedHour === ma}
+											onClick={() => setSelectedHour(ma)}
+										>
 											{ma}
 										</StyledHour>
 									))}
