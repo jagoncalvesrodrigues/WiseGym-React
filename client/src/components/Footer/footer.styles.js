@@ -3,7 +3,7 @@ import { COLORS } from "../../constants/colors";
 
 const StyledBoxFooter = styled.div`
     background-color: ${COLORS.black};
-    width: 100%;
+    width: 100vw;
     height: 300px;
     display: flex;
     flex-direction: column;
