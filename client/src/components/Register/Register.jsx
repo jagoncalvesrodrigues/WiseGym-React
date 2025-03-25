@@ -84,9 +84,9 @@ const Register = ({ register, registerAppears }) => {
 						{errors.pass?.message}
 					</StyledErrorText>
 					<StyledButton type='submit' value='Sign Up' />
-					<StyledLabelSignUp htmlFor=''>
-						Do you have an account?<a href=''>Login</a>
-					</StyledLabelSignUp>
+					{/* <StyledLabelSignUp htmlFor=''>
+						Do you have an account?<a href=''> Login</a>
+					</StyledLabelSignUp> */}
 				</StyledFormSection>
 			</StyledLoginBox>
 		</StyledLoginContainer>
