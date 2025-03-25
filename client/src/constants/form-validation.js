@@ -1,28 +1,25 @@
 const messages = {
-    text:{
+    pass:{
         required:'This field is required',
-        wrong:'Only letters and spaces'
+        wrong:'the password must be at least 6 characters long with a special character _ - ? !'
     },
     email:{
         required:'This field is required',
         wrong:'Enter a valid email'
     },
-    query:{
-        required:'Check one option',
-    }
 };
 
 const patterns = {
     //expresion regular 
-    onlyLetters:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+    lettersAndCharacter:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[_\-?!]).{6,}$/,
     email:/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ 
 }
 
-const textValidation = {
-    required:messages.text.required,
+const passValidation = {
+    required:messages.pass.required,
     pattern:{
-        value: patterns.onlyLetters,
-        message:messages.text.wrong
+        value: patterns.lettersAndCharacter,
+        message:messages.pass.wrong
     }
 }
 
@@ -34,12 +31,8 @@ const emailValidation = {
     }
 }
 
-const queryValidation = {
-    required:messages.query.required,
-}
 
 export const FORM_VALIDATIONS = {
-    TEXT:textValidation,
+    PASS:passValidation,
     EMAIL:emailValidation,
-    QUERY:queryValidation
 }

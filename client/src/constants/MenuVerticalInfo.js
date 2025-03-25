@@ -13,11 +13,6 @@ export const MENUVERTICAL = [
         name:'Your Reservations',
         icon:'/assets/images/icon/Reservations.svg',
         route:'/reservations'
-    },
-    { 
-        name:'Reserve a Space',
-        icon:'/assets/images/icon/Space.svg',
-        route:'/space'
-    },
+    }
     
 ];

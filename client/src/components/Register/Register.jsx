@@ -68,12 +68,21 @@ const Register = ({ register, registerAppears }) => {
 						type='email'
 						{...formRegister('email', FORM_VALIDATIONS.EMAIL)}
 						id='email'
+						$error={!!errors.email}
 					/>
 					<StyledErrorText $color={COLORS.red}>
 						{errors.email?.message}
 					</StyledErrorText>
 					<StyledLabel htmlFor=''>Password</StyledLabel>
-					<StyledInput type='password' name='pass' id='pass' />
+					<StyledInput
+						type='password'
+						{...formRegister('pass', FORM_VALIDATIONS.PASS)}
+						id='pass'
+						$error={!!errors.pass}
+					/>
+					<StyledErrorText $color={COLORS.red}>
+						{errors.pass?.message}
+					</StyledErrorText>
 					<StyledButton type='submit' value='Sign Up' />
 					<StyledLabelSignUp htmlFor=''>
 						Do you have an account?<a href=''>Login</a>

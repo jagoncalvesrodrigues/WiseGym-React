@@ -1,11 +1,4 @@
-import {
-	StyledBoxFooter,
-	StyledBoxLogo,
-	StyledButtosFooterMenu,
-	StyledInfoButtons,
-	StyledOptionsFooterMenu,
-	StyledRRSS
-} from './footer.styles';
+import { StyledBoxFooter, StyledBoxLogo, StyledRRSS } from './footer.styles';
 
 const Footer = () => {
 	return (
@@ -13,17 +6,6 @@ const Footer = () => {
 			<StyledBoxLogo>
 				<img src='/assets/images/logos/Logo-wise-gym-w.png' alt='' />
 			</StyledBoxLogo>
-			<StyledOptionsFooterMenu>
-				<StyledButtosFooterMenu>
-					<a href=''>LOGIN</a>
-				</StyledButtosFooterMenu>
-				<StyledButtosFooterMenu>
-					<a href=''>HELP</a>
-				</StyledButtosFooterMenu>
-				<StyledButtosFooterMenu>
-					<a href=''>CONTACT</a>
-				</StyledButtosFooterMenu>
-			</StyledOptionsFooterMenu>
 			<StyledRRSS>
 				<a href='https://www.instagram.com/ufc/'>
 					<img src='/assets/images/icon/Instagram.svg' alt='' />
@@ -35,7 +17,6 @@ const Footer = () => {
 					<img src='/assets/images/icon/Youtube.svg' alt='' />
 				</a>
 			</StyledRRSS>
-			<StyledInfoButtons></StyledInfoButtons>
 		</StyledBoxFooter>
 	);
 };

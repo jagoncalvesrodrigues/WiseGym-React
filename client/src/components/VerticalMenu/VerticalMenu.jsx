@@ -27,6 +27,18 @@ const VerticalMenu = () => {
 	useEffect(() => {
 		getUserById(user, setUserData);
 	}, [user]);
+
+	useEffect(() => {
+		if (toggle) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+		// Cleanup para restaurar el scroll cuando el componente se desmonte
+		return () => {
+			document.body.style.overflow = 'auto';
+		};
+	}, [toggle]);
 	return (
 		<>
 			<StyledNavMobileProfile>

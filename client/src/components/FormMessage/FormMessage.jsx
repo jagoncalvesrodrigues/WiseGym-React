@@ -77,14 +77,11 @@ const updateMessage = async (event, id) => {
 	const message = event.target.message.value;
 
 	//conectar a mongo para que envie la info
-	await fetch(
-		`https://server-k79qevkf5-juans-projects-e9623df8.vercel.app/api/messages/${id}`,
-		{
-			method: 'PATCH',
-			body: JSON.stringify({ title, message }),
-			headers: { 'Content-Type': 'application/json' }
-		}
-	);
+	await fetch(`https://server-umber-three-60.vercel.app/api/messages/${id}`, {
+		method: 'PATCH',
+		body: JSON.stringify({ title, message }),
+		headers: { 'Content-Type': 'application/json' }
+	});
 };
 
 // Función para manejar el envío del formulario

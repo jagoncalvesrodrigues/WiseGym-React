@@ -102,6 +102,7 @@ const StyledInput = styled.input`
     border-bottom: 1px solid ${COLORS.black};
     padding: 10px;
     margin-bottom: 10px;
+    color: ${({ $error }) => ($error ? COLORS.red : COLORS.black)};
 `;
 
 const StyledButton = styled.input`
@@ -114,6 +115,8 @@ const StyledButton = styled.input`
 const StyledErrorText = styled.p`
     color: ${({$color})=>$color};
     margin: 0;
+    position: relative;
+    font-size: 12px;
 `;
 
 export {StyledErrorText,StyledLabelSignUp,StyledLabelForgot,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}

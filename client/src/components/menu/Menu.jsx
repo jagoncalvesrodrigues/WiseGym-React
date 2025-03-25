@@ -24,6 +24,18 @@ const Menu = ({ loginAppears, registerAppears }) => {
 		console.log('User actualizado:', user);
 	}, [user]);
 
+	useEffect(() => {
+		if (toggle) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+		// Cleanup para restaurar el scroll cuando el componente se desmonte
+		return () => {
+			document.body.style.overflow = 'auto';
+		};
+	}, [toggle]);
+
 	return (
 		<StyledNavBar $isVisible={toggle}>
 			<StyledNavMobile>
