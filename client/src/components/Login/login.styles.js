@@ -91,9 +91,10 @@ const StyledLabelSignUp = styled.label`
     align-self: center;
     padding: 16px;
 `;
-const StyledLabelForgot = styled.a`
+const StyledErrorText = styled.p`
     font-size: 0.813rem;
-    align-self: flex-end;
+    align-self: center;
+    color: ${COLORS.red};
 `;
 
 const StyledInput = styled.input`
@@ -111,4 +112,7 @@ const StyledButton = styled.input`
     background-color: ${COLORS.black};
 `;
 
-export {StyledLabelSignUp,StyledLabelForgot,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}
+
+
+
+export {StyledErrorText,StyledLabelSignUp,StyledLabel,StyledButton,StyledFormSection,StyledImageSection,StyledInput,StyledLoginBox,StyledLoginContainer,StyledLogo,StyledSubtitle,StyledTitle}
