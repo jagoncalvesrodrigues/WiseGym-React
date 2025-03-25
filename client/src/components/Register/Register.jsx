@@ -8,7 +8,6 @@ import {
 	StyledImageSection,
 	StyledInput,
 	StyledLabel,
-	StyledLabelSignUp,
 	StyledLoginBox,
 	StyledLoginContainer,
 	StyledLogo,
@@ -55,7 +54,9 @@ const Register = ({ register, registerAppears }) => {
 				<StyledImageSection />
 				<StyledFormSection
 					autoComplete='off'
-					onSubmit={handleSubmit(data => registerUser(data, navigate, reset))}
+					onSubmit={handleSubmit(data =>
+						registerUser(data, navigate, reset, registerAppears)
+					)}
 					noValidate
 				>
 					<StyledLogo>
@@ -93,7 +94,7 @@ const Register = ({ register, registerAppears }) => {
 	);
 };
 
-const registerUser = async (event, navigate) => {
+const registerUser = async (event, navigate, registerAppears) => {
 	event.preventDefault();
 	const email = event.target.email.value;
 	const pass = event.target.pass.value;
@@ -113,6 +114,7 @@ const registerUser = async (event, navigate) => {
 			body: JSON.stringify({ _id: id, email }),
 			headers: { 'Content-Type': 'application/json' }
 		});
+		registerAppears();
 		navigate('/');
 	} catch (err) {
 		console.error('ERROR registering user: ', err.code, err.message);

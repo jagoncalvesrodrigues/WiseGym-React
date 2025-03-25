@@ -35,7 +35,7 @@ const Login = ({ login, loginAppears }) => {
 				<StyledFormSection
 					autoComplete='off'
 					onSubmit={event => {
-						loginUser(event, navigate);
+						loginUser(event, navigate, loginAppears);
 					}}
 				>
 					<StyledLogo>
@@ -50,7 +50,7 @@ const Login = ({ login, loginAppears }) => {
 					<StyledLabelForgot htmlFor=''>Forgot Password</StyledLabelForgot>
 					<StyledButton type='submit' value='Login' />
 					<StyledLabelSignUp htmlFor=''>
-						Don’t have an account?<a href=''>Login</a>
+						Don’t have an account?<a href=''>Register</a>
 					</StyledLabelSignUp>
 				</StyledFormSection>
 			</StyledLoginBox>
@@ -58,7 +58,7 @@ const Login = ({ login, loginAppears }) => {
 	);
 };
 
-const loginUser = async (event, navigate) => {
+const loginUser = async (event, navigate, loginAppears) => {
 	event.preventDefault();
 	//guardamos la info del campo en una variable
 	const email = event.target.email.value;
@@ -67,6 +67,7 @@ const loginUser = async (event, navigate) => {
 		await signInWithEmailAndPassword(auth, email, pass);
 		console.log('User Logged');
 		event.target.reset();
+		loginAppears();
 		navigate('/');
 	} catch (err) {
 		console.error('Error login user:', err.code, err.message);
