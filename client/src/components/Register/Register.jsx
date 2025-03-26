@@ -94,10 +94,8 @@ const Register = ({ register, registerAppears }) => {
 	);
 };
 
-const registerUser = async (event, navigate, registerAppears) => {
-	event.preventDefault();
-	const email = event.target.email.value;
-	const pass = event.target.pass.value;
+const registerUser = async (data, navigate, registerAppears) => {
+	const { email, pass } = data;
 	try {
 		const firebaseResponse = await createUserWithEmailAndPassword(
 			auth,
