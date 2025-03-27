@@ -83,6 +83,10 @@ const StyledSignOut = styled.img`
       right: 50px;
     }
 `;
+const StyledCheck = styled.img`
+    width: 40px;
+    margin-right: 20px;
+`;
 //SUBSCRIPTIONS
 
 const StyledSubscriptions = styled.div`
@@ -146,4 +150,4 @@ const StyledButtonChangeSubscription = styled.button`
         width: 200px;
     }
 `;
-export {StyledButtonChangeSubscription,StyledBoxButtonsConfirm,StyledImgLogoBoxConfirm,StyledBoxConfirmation,StyledBoxChangeSubscriptionPopUp,StyledSignOut,StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}
+export {StyledCheck,StyledButtonChangeSubscription,StyledBoxButtonsConfirm,StyledImgLogoBoxConfirm,StyledBoxConfirmation,StyledBoxChangeSubscriptionPopUp,StyledSignOut,StyledInfoPofile,StyledMainBoxProfile,StyledSubscriptions,StyledBoxInputEdit,StyledInput,StyleImageBoxProfile,StyleImageProfile,StyledProfile,StyledProfileForm}

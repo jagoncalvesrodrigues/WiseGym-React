@@ -7,6 +7,7 @@ import {
 	StyledBoxConfirmation,
 	StyledBoxInputEdit,
 	StyledButtonChangeSubscription,
+	StyledCheck,
 	StyledImgLogoBoxConfirm,
 	StyledInfoPofile,
 	StyledInput,
@@ -19,7 +20,7 @@ import {
 	StyleImageProfile
 } from './profile.styles';
 import { AuthContext } from '../../contexts/Auth.context';
-import { signOut } from 'firebase/auth';
+import { signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import Subscription from '../../components/Subscription/Subscription';
 import AddSubscription from '../../components/AddSubscription/AddSubscription';
@@ -28,13 +29,21 @@ import { COLORS } from '../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+	const [isEditing, setIsEditing] = useState(false);
 	const [userData, setUserData] = useState(null);
 	const [selectedSubscription, setSelectedSubscription] = useState(null);
 	// const [suscription, setSuscription] = useState(false);
 	const [showPopUp, setShowPopUp] = useState(false);
 	const { user } = useContext(AuthContext);
-	console.log(user, 'suscription:' + selectedSubscription);
+	// console.log(user, 'suscription:' + selectedSubscription);
 	const navigate = useNavigate();
+	const [name, setName] = useState(''); // Estado para el nombre
+
+	useEffect(() => {
+		if (user) {
+			setName(user.displayName || ''); // Inicializa el nombre con el de Firebase
+		}
+	}, [user]);
 
 	useEffect(() => {
 		getUserById(user, setUserData);
@@ -51,7 +60,6 @@ const Profile = () => {
 			document.body.style.overflow = 'auto';
 		};
 	}, [showPopUp]);
-	console.log(userData);
 	return (
 		<>
 			{showPopUp && (
@@ -97,13 +105,41 @@ const Profile = () => {
 						<StyledProfileForm>
 							<label htmlFor=''>Name </label>
 							<StyledBoxInputEdit>
-								<StyledInput type='text' defaultValue={userData?.name} />
-								<img src='/assets/images/icon/Edit.svg' alt='' />
+								<StyledInput
+									readOnly={!isEditing}
+									type='text'
+									defaultValue={userData?.name}
+									onChange={e => setName(e.target.value)}
+								/>
+								{!isEditing ? (
+									<img
+										src='/assets/images/icon/Edit.svg'
+										onClick={() => setIsEditing(!isEditing)}
+									/>
+								) : (
+									<>
+										<StyledCheck
+											src='/assets/images/icon/check.svg'
+											alt='Edit'
+											onClick={e =>
+												updateName(e, userData._id, name, setUserData, navigate)
+											}
+										/>
+										<img
+											src='/assets/images/icon/Close.svg'
+											alt='Edit'
+											onClick={() => setIsEditing(!isEditing)}
+										/>
+									</>
+								)}
 							</StyledBoxInputEdit>
 							<label htmlFor=''>Email</label>
 							<StyledBoxInputEdit>
-								<StyledInput type='text' defaultValue={userData?.email} />
-								<img src='/assets/images/icon/Edit.svg' alt='' />
+								<StyledInput
+									readOnly={true}
+									type='text'
+									defaultValue={userData?.email}
+								/>
 							</StyledBoxInputEdit>
 							{/* <label htmlFor=''>Password</label>
 							<StyledBoxInputEdit>
@@ -154,7 +190,7 @@ const updateSuscription = async (event, id, setUserData, navigate) => {
 
 	//conectar a mongo para que envie la info
 	const response = await fetch(
-		`https://server-umber-three-60.vercel.app/users/${id}`,
+		`https://server-umber-three-60.vercel.app/api/users/${id}`,
 		{
 			method: 'PATCH',
 			body: JSON.stringify({ suscription: [] }),
@@ -164,6 +200,32 @@ const updateSuscription = async (event, id, setUserData, navigate) => {
 	const updatedUser = await response.json();
 	setUserData(updatedUser);
 	navigate('/');
+};
+
+const updateName = async (event, id, newName, setUserData, navigate) => {
+	event.preventDefault();
+	try {
+		// 🔹 1. Actualizar el nombre en Firebase Authentication
+		if (auth.currentUser) {
+			await updateProfile(auth.currentUser, { displayName: newName });
+		}
+
+		// 🔹 2. Actualizar el nombre en MongoDB
+		const response = await fetch(
+			`https://server-umber-three-60.vercel.app/api/users/${id}`,
+			{
+				method: 'PATCH',
+				body: JSON.stringify({ name: newName }), // Aquí pones el nombre real, no un array vacío []
+				headers: { 'Content-Type': 'application/json' }
+			}
+		);
+
+		const updatedUser = await response.json();
+		setUserData(updatedUser); // Actualizar el estado local con los nuevos datos
+		navigate('/'); // Redirigir después de la actualización
+	} catch (error) {
+		console.error('Error actualizando el nombre:', error);
+	}
 };
 
 export default Profile;
