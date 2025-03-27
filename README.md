@@ -14,7 +14,9 @@
 
 ## Descripción 📑
 
-Aplicacion web para un gimnasio para poder reservar clases y gestionar una suscripcion 
+Aplicacion web para un gimnasio para poder reservar clases y gestionar una suscripcion. Si se desea entrar como admin:
+email: fufu@gmail.com
+pass: fufu123
 
 ## ¿Qué he aprendido en este proyecto? 🙇🏻
 
